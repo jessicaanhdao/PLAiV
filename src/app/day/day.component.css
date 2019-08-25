@@ -1,0 +1,11 @@
+.form-control:focus {
+    outline: none !important;
+    border:1px solid #00c4cf;
+    box-shadow: 0 0 10px #00c4cf;
+    /* transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out; */
+}
+
+.done {
+    color : #00c4cf;
+    text-decoration: line-through    
+}

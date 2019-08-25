@@ -1,0 +1,28 @@
+<!-- <div *ngIf="(i+1)+7*(j)-days[0] <= daysOfMonth "> -->
+<div class="row h-100"  >
+    <div *ngFor="let day of daysOfWeek" class=" col-sm-1 border h-100">
+        <h5 class="align-middle"><i>{{day}}</i></h5>
+    </div>
+            
+</div>
+<div class="row" *ngFor="let week of weeks; index as j" >
+        <div *ngFor="let day of daysOfWeek; index as i" class="col-sm-1 px-0 py-0 border-top everyday">
+            
+            <div *ngIf = "j==0 && i < days[0] || (i+1)+7*(j)-days[0] > daysOfMonth; else elseBlock"style=" width: 100%; padding-top : 100%;">  
+                <h1 style="position: absolute; bottom: 10px; left: 10px"></h1>
+            </div>  
+            <ng-template #elseBlock >  
+                <div style=" width: 100%; padding-top : 100%;
+                "  [routerLink]="['/',currentMonth,(i+1)+7*(j)-days[0]]"
+                    ng-init="incrementDate()" (loaded)="incrementDate()">
+                    <h5 style="position: absolute; left: 50%; right: 50%; top: 50%; bottom: 50%">{{getTask((i+1)+7*(j)-days[0])}} tasks</h5> 
+                    <h1 style="position: absolute; bottom: 10px; left: 10px">{{(i+1)+7*(j)-days[0]}}</h1>
+                    
+                </div>
+            </ng-template>
+        </div>
+    </div>
+    <div class="row"></div>
+<!-- </div> -->
+
+    
