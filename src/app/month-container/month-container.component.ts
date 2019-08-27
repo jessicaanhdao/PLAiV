@@ -19,8 +19,6 @@ export class MonthContainerComponent implements OnInit {
     this.month.add(1,'months')
     this.thisMonth = this.month.format('MMMM')
     this.daysOfMonth = this.month.daysInMonth()
-    console.log("type " +typeof this.daysOfMonth)
-
   }
   prevMonth() {
     this.month.subtract(1,'months')

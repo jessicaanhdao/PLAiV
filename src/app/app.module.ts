@@ -6,21 +6,29 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { DayComponent } from './day/day.component';
 import { MonthComponent } from './month/month.component';
-import { YearComponent } from './year/year.component';
 import { AppBootstrapModule } from './app-bootstrap.module';
 import { MonthContainerComponent } from './month-container/month-container.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { CellComponent } from './cell/cell.component';
+import { WeekComponent } from './week/week.component';
+import { DayContainerComponent } from './day-container/day-container.component';
+import { WeekContainerComponent } from './week-container/week-container.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     DayComponent,
+    WeekComponent,
     MonthComponent,
-    YearComponent,
     MonthContainerComponent,
-    LoginComponent
+    LoginComponent,
+    NotfoundComponent,
+    CellComponent,
+    DayContainerComponent,
+    WeekContainerComponent
   ],
   imports: [
     BrowserModule,

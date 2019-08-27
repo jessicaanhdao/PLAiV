@@ -1,0 +1,20 @@
+<div class="container"  style=" height: 100vh">
+    <div class="row py-3" style="background : white;">
+        <div class="col-md-1">
+            <button class="btn btn-outline-dark" (click)="prevDay()"><i class="fas fa-chevron-left"></i></button>
+        </div>
+        <div class="col-sm-6 mx-auto">
+            <h1>{{viewDate}}</h1>
+            <p *ngIf= "isToday">TODAY</p>
+
+        </div>
+        <div class="col-sm-4 mx-auto">
+            <h2 *ngIf= "isToday">{{currentTime}}</h2>
+            <p>{{undone}} task completed</p>
+        </div>
+        <div class="col-md-1">
+            <button class="btn btn-outline-dark" (click)="nextDay()"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+    <app-day [currentMoment]='currentMoment' [radiksDate] = 'radiksDate'></app-day>
+</div>

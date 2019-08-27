@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Task } from '../../task';
-import { Observable } from 'rxjs'
-// import 'rxjs/add/operator/map'
-// import { ThrowStmt } from '@angular/compiler';
+import  Task  from '../../models/task';
 import { HttpHeaders } from '@angular/common/http';
+import { getConfig } from 'radiks';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -20,30 +18,53 @@ const httpOptions = {
 export class TaskDataService {
   taskList : Task[]
   constructor(private http: HttpClient) {   }
-  URL = "http://localhost:52389/api/task"
-  getTasks() {
-    return this.taskList;
+  // URL = "http://localhost:52389/api/task"
+
+  async fetchTaskListByDate(date : String) {
+    let TaskModel : any = Task
+    console.log("fetching task list")
+
+    return await TaskModel.fetchOwnList({ dateCreated : date})
+  }
+
+  async fetchTaskListUnDone(date : String) {
+    let TaskModel : any = Task
+    return await TaskModel.fetchOwnList({ dateCreated : date, isDone: false})
+  }
+
+  async addNewTask(task) {
+    let TaskModel : any = Task
+    // console.log(`${task.TaskName} ${task.TaskID} ${task.DoneBy} ${task.IsDone} ${task.PostedDate}`);
+
+    const newTask = new TaskModel({
+      dateCreated : task.PostedDate,
+      doneBy: task.DoneBy,
+      isDone :false,
+      name: task.TaskName,
+      description: ""
+    })
+    await newTask.save()
+  }
+
+  async deleteTask(task) {
+    try {
+      await task.destroy();
+    } catch (e) {
+      console.error("cannot delete task "+e.message)
+    }
+  }
+  async checkTaskDone(task) {
+    // return this.http.put(this.URL+'/'+id+'?postedDate='+posteddate, task, httpOptions)
+    task.update({
+      isDone : !task.attrs.isDone
+    })
+    try {
+      await task.save()
+    } catch(e) {
+      console.error("cannot update task "+e.message)
+    }
 
   }
-  addTask(task : Task) {
-    this.taskList.push(task);
-  }
-  getTaskList() {
-    return this.http.get(this.URL, httpOptions)
-  }
-  getTaskListByDate(date : String) {
-    return this.http.get(this.URL+'?posteddate='+date, httpOptions)
-  }
-  postNewTask(newTask : Task) {
-    console.log(`${newTask.TaskName} ${newTask.TaskID} ${newTask.DoneBy} ${newTask.IsDone} ${newTask.PostedDate}`);
-    
-    return this.http.post(this.URL, newTask, httpOptions)
-  } 
-  deleteTask(id : number, posteddate : String) {
-    return this.http.delete(this.URL+'/'+id+'?postedDate='+posteddate, httpOptions)
-  }
-  checkTaskDone(id : number, posteddate : String, task : Task) {
-    return this.http.put(this.URL+'/'+id+'?postedDate='+posteddate, task, httpOptions)
-
-  }
+  
+  
 }

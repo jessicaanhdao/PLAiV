@@ -1,39 +1,44 @@
-/* @media (min-width: 768px) {
-.modal .modal-dialog.modal-left {
-    left: 0
-}
-}
-@media (min-width: 992px) {
-.modal .modal-full-height {
-    position: absolute;
-    display: flex;
-    margin: 0;
-    height: auto;
-    min-height: 100%;
-    top: 0;
-}
-}
-
-.modal.fade.left .modal-dialog{
-    left: -320px;
-		-webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
-		   -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
-		     -o-transition: opacity 0.3s linear, left 0.3s ease-out;
-		        transition: opacity 0.3s linear, left 0.3s ease-out;
+.nav-link:hover{
+	border:1px solid  #00c4cf;
+	border-radius: 5px;
 
 }
-.modal.left.fade.show .modal-dialog{
-    left: 0;
+.nav-link.active {
+    background-color: #00c4cf!important;
 }
 
-.modal.left .modal-dialog,
-	.modal.right .modal-dialog {
-		position: fixed;
-		margin: auto;
-		width: 320px;
-		height: 100%;
-		-webkit-transform: translate3d(0%, 0, 0);
-		    -ms-transform: translate3d(0%, 0, 0);
-		     -o-transform: translate3d(0%, 0, 0);
-		        transform: translate3d(0%, 0, 0);
-	} */
+#defaultFont{
+	font-family: 'Montserrat', sans-serif;
+}
+
+#font1 {
+	font-family: 'salmaregular', cursive;
+	font-size: x-large
+
+}
+
+#font2 {
+	font-family: 'Love Ya Like A Sister', cursive;
+	font-size: x-large
+
+}
+
+#font3 {
+	font-family: 'Sacramento', cursive;
+	font-size: x-large
+}
+
+#pinkColor:hover {
+	border:1px solid  #f8a5c0;
+	border-radius: 5px;
+}
+#pinkColor.active {
+	background-color: #f8a5c0!important;
+}
+#whiteColor:hover {
+	border:1px solid  whitesmoke;
+	border-radius: 5px;
+}
+#whiteColor.active {
+	background-color: whitesmoke!important;
+}

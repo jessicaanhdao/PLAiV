@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-sm-10 mx-auto" style="text-align: center">
+        <div class="row">
+
+            <div class="col-sm-1">
+                <button class="btn btn-outline-dark" (click)="prevWeek()"
+                tooltip="previous week"><i class="fas fa-chevron-left"></i></button>
+            </div>
+            <div class="col-md-10 col-sm-6" >
+            <h1>August</h1>
+            <p>{{viewWeekStart}}-{{viewWeekEnd}}</p>
+            </div>
+            <div class="col-sm-1">
+                <button class="btn btn-outline-dark" (click)="nextWeek()"
+                tooltip="next week"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div> 
+        <app-week [days] = 'days'></app-week>  
+     
+    </div>
+</div>

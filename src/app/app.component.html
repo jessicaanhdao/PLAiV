@@ -1,4 +1,9 @@
-<div class="container-fluid">
+
+<div *ngIf="auth.isLoggedIn" >
     <app-nav></app-nav>
 </div>
+<div *ngIf="!auth.isLoggedIn" class="container-fluid" >
+    <app-login></app-login>
+</div>
+
 <router-outlet></router-outlet>

@@ -1,5 +1,6 @@
 <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#myModal"
 tooltip="menu"><i class="fas fa-ellipsis-v"></i></button>
+<button class="btn btn-outline-dark" style="position: absolute; right : 10px" (click)="printView()"><i class="fas fa-print"></i>Print</button>
 
 <!-- Full Height Modal Left -->
 <div class="modal fade left" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -8,7 +9,7 @@ tooltip="menu"><i class="fas fa-ellipsis-v"></i></button>
   <div class="modal-dialog modal-full-height modal-left" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title w-100" id="myModalLabel">Menu</h4>
+        <h3 class="modal-title w-100" id="myModalLabel">{{username}}</h3>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -16,13 +17,46 @@ tooltip="menu"><i class="fas fa-ellipsis-v"></i></button>
       <div class="modal-body">
         <ul class="list-group list-group-flush">
             <li class="list-group-item" routerLink='/'>Today</li>
-            <li class="list-group-item" routerLink='/month'>Month view</li>
-            <li class="list-group-item" routerLink='/year'>Year view</li>
+            <li class="list-group-item" routerLink='/week'>My Weekly Plan</li>
+            <li class="list-group-item" routerLink='/month'>My Monthly Plan</li>
+            <li class="list-group-item">Fonts
+              <ul class="nav nav-pills nav-fill">
+                <li class="nav-item " (click)="changeFont('Montserrat')"id="defaultFont">
+                  <a class="nav-link active" data-toggle="pill" role="tab" aria-selected="true"
+                  >Default</a>
+                </li>
+                <li class="nav-item" (click)="changeFont('salmaregular', cursive)"  id="font1">
+                  <a class="nav-link" data-toggle="pill" role="tab"
+                 >Style 1</a>
+                </li>
+                <li class="nav-item" (click)="changeFont('Love Ya Like A Sister', cursive)" id="font2">
+                  <a class="nav-link" data-toggle="pill" role="tab"
+                  >Style 2</a>
+                </li>
+              </ul>
+            </li>
+            <li class="list-group-item">Theme
+              <ul class="nav nav-pills nav-fill">
+                <li class="nav-item " (click)="changeTheme('#00c4cf')"  id="defaultColor">
+                  <a class="nav-link active" data-toggle="pill" role="tab" aria-selected="true"
+                 >Default</a>
+                </li>
+                <li class="nav-item" (click)="changeTheme('#f8a5c0')">
+                  <a class="nav-link" data-toggle="pill" role="tab"
+                  id="pinkColor">Pink</a>
+                </li>
+                <li class="nav-item" (click)="changeTheme('#fff')">
+                  <a class="nav-link" data-toggle="pill" role="tab"
+                  id="whiteColor">White</a>
+                </li>
+              </ul>
+            </li>
+
           </ul>
       </div>
       <div class="modal-footer justify-content-center">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+        <button type="button" class="btn btn-outline-dark" (click)="logOut()">Log Out</button>
       </div>
     </div>
   </div>

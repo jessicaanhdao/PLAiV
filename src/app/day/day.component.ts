@@ -2,7 +2,7 @@ import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import * as moment from 'moment';
 import { ActivatedRoute } from "@angular/router";
 import { TaskDataService } from '../shared/task-data/task-data.service';
-import {Task} from '../task'
+// import Task from '../models/task'
 declare var $: any;
 
 @Component({
@@ -12,68 +12,30 @@ declare var $: any;
   providers: [TaskDataService]
 })
 export class DayComponent implements OnInit, OnChanges {
-  currentMoment = moment();
-  currentDate = this.currentMoment.format("YYYY/MM/DD")
-  todayDate = this.currentMoment.format('dddd, MMMM DD, YYYY')
-  currentTime = this.currentMoment.format('LTS')
-  taskList : Task[];
-  newTask : Task ;
-  isToday = true;
   
-  constructor(private activatedRoute: ActivatedRoute, private taskService : TaskDataService  ) { 
-   
-    this.activatedRoute.params.subscribe(params => {
-      let month = params['month'];
-      let date = params['date'];
-      
-      console.log(`${month},${date}`);
-      });
- 
-      setInterval(() => {
-        if (this.isToday == true) {
+  taskList : [];
+  newTask = {  TaskName : "", DoneBy : "", IsDone : false, PostedDate : ""}
+  isToday = true;
+  // radiksDate : string;
 
-        console.log("is today? "+this.isToday)
-
-        this.currentMoment = moment();
-        this.currentTime = this.currentMoment.format('LTS')
-        }
-      }, 1000)
-
-    
+  @Input() currentMoment : moment.Moment ;
+  @Input() radiksDate : string ;
+  
+  constructor( private taskDataService : TaskDataService  ) { 
   }
-  addNewTask() {
-    if (this.newTask.TaskName.trim() !== ""){
-      this.newTask.TaskID = this.taskList.length
-      this.newTask.IsDone = false
-
-      this.taskService.postNewTask(this.newTask)
-        .subscribe((res : Task) => {
-          console.log(res);
-          this.taskList.push(res)
-        })
-    }
-    this.newTask.TaskName = ""
-
+  async addNewTask() {
+    await this.taskDataService.addNewTask(this.newTask);
+    this.newTask.TaskName = "" 
+    this.newTask.DoneBy = ""
+    await this.fetchTasks()
   }
-  checkTaskDone(id ,i) {
-    console.log("current id" +id)
-    var task = this.taskList[id]
-    task.IsDone = !task.IsDone
-    this.taskService.checkTaskDone(id, this.currentDate, task)
-    .subscribe(
-      (res : Task) => {
-        this.taskList[res.TaskID].IsDone = !this.taskList[res.TaskID].IsDone
-        console.log("after update "+res.TaskID)
-      }
-    )
+  async checkTaskDone(task ,i) {
+    this.taskDataService.checkTaskDone(task)
   }
-  deleteTask(id, i) {
-    this.taskService.deleteTask(id, this.currentDate).subscribe(
-      (res : Task) => {
-        this.taskList.splice(i,1)
-        console.log("after delete "+res.TaskName+" with ID "+res.TaskID)
-      }
-    )
+  async deleteTask(task, i) {
+    await this.taskDataService.deleteTask(task)
+    await this.fetchTasks()
+
   }
   filterBy(prop: string) {
     return this.taskList.sort((a, b ) =>  {
@@ -85,34 +47,18 @@ export class DayComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(){
-    console.log("helloo")
+    this.fetchTasks()
   }
   ngOnInit() {
-    this.fetchTasks()
+    // console.log( `moment ${this.currentMoment} vs today ${this.today} `)
+    this.radiksDate = this.currentMoment.format("YYYY/MM/DD")
+
   }
 
-  prevDay() {
-    this.currentMoment.subtract(1,"days")
-    this.isToday = false;
-    this.fetchTime()
-    this.fetchTasks()
-  }
+  async fetchTasks(){
+    this.newTask = {TaskName : "", DoneBy : "", IsDone : false, PostedDate : this.radiksDate}
+    this.taskList = await this.taskDataService.fetchTaskListByDate( this.radiksDate)
+    // console.log("Task list "+this.taskList.length)
 
-  nextDay() {
-    this.currentMoment.add(1,"days")
-    this.isToday = false;
-    this.fetchTime()
-    this.fetchTasks()
-  }
-  fetchTime() {
-    this.currentDate = this.currentMoment.format("YYYY/MM/DD")
-    console.log("current date" + this.currentDate)
-
-    this.todayDate = this.currentMoment.format('dddd, MMMM DD, YYYY')
-  }
-  fetchTasks(){
-    this.newTask = { TaskID : 0, TaskName : "", DoneBy : "", IsDone : false, PostedDate : this.currentDate}
-    this.taskService.getTaskListByDate(this.currentDate).subscribe(res => {
-      this.taskList = res as Task[]});
   }
 }
