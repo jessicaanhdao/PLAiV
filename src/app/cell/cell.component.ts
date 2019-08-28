@@ -13,6 +13,8 @@ export class CellComponent implements OnInit {
  
   constructor(private taskService : TaskDataService) { }
   num = ""
+  dateString = ""
+  month =  ""
   ngOnInit() {
   }
   ngOnChanges(){
@@ -20,11 +22,15 @@ export class CellComponent implements OnInit {
     this.num = ""
   }
   async getTask() {
-    var month = moment(this.currentMonth,"MMMM").format("MM")
-    var dateString = "2019/"+month+"/"+this.day;
+    this.month = moment(this.currentMonth,"MMMM").format("MM")
+    if (this.day < 10) {
+      this.dateString = "2019/"+this.month+"/0"+this.day;
+    } else {
+      this.dateString = "2019/"+this.month+"/"+this.day;
+    }
     var taskCount = 0
     try {
-      taskCount= await this.taskService.fetchTaskListByDate(dateString).then((tasks) => {return tasks.length })
+      taskCount= await this.taskService.fetchTaskListByDate(this.dateString).then((tasks) => {return tasks.length })
     } catch(e) {
       console.error(e.message)
     }

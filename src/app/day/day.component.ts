@@ -37,6 +37,9 @@ export class DayComponent implements OnInit, OnChanges {
     await this.fetchTasks()
 
   }
+  editTask(task) {
+    console.log("editing task... "+task.attrs.name);
+  }
   filterBy(prop: string) {
     return this.taskList.sort((a, b ) =>  {
     var aTime = moment(a[prop],"HH:mm")

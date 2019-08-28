@@ -15,6 +15,7 @@ import { CellComponent } from './cell/cell.component';
 import { WeekComponent } from './week/week.component';
 import { DayContainerComponent } from './day-container/day-container.component';
 import { WeekContainerComponent } from './week-container/week-container.component';
+import { WeekCellComponent } from './week-cell/week-cell.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { WeekContainerComponent } from './week-container/week-container.componen
     NotfoundComponent,
     CellComponent,
     DayContainerComponent,
-    WeekContainerComponent
+    WeekContainerComponent,
+    WeekCellComponent
   ],
   imports: [
     BrowserModule,

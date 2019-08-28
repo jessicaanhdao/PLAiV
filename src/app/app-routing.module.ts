@@ -12,7 +12,7 @@ import { WeekContainerComponent } from './week-container/week-container.componen
 const routes: Routes = [
   { path : '', component: DayContainerComponent,  canActivate : [AuthGuard]},
   { path : 'login', component: LoginComponent},
-  { path : ':month/:date', component: DayContainerComponent, canActivate : [AuthGuard]},
+  { path : ':year/:month/:date', component: DayContainerComponent, canActivate : [AuthGuard]},
   { path : 'week', component: WeekContainerComponent, canActivate : [AuthGuard]},
   { path : 'month', component: MonthContainerComponent, canActivate : [AuthGuard]},
   {path: '404', component: NotfoundComponent},

@@ -7,8 +7,8 @@ import * as moment from 'moment';
   styleUrls: ['./month-container.component.css']
 })
 export class MonthContainerComponent implements OnInit {
-  month = moment()
-  thisMonth = this.month.format('MMMM')
+  month = moment() //Moment object
+  thisMonth = this.month.format('MMMM') //string object - for view
   daysOfMonth = this.month.daysInMonth()
 
   constructor() { }

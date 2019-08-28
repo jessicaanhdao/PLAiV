@@ -19,7 +19,7 @@ export class AppComponent {
 
   ngOnInit(){
     if(this.auth.handleSignedIn()) {
-      this.router.navigate([''])
+      // this.router.navigate([''])
 
     }
     // if () {

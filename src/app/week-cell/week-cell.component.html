@@ -1,0 +1,12 @@
+<div class="md-form" style="height: 200px; overflow-x:hidden; overflow-y: scroll">
+    <ng-template [ngIf]="tasks.length > 0">
+        <input type="text" class="form-control" *ngFor="let task of tasks" value="{{task.attrs.name}}" disabled>
+    </ng-template>
+    <ng-template [ngIf]="tasks.length == 0">
+    <input type="text" class="form-control" placeholder="no task to show" disabled>
+    <input type="text" class="form-control" placeholder="click to add new task" disabled>
+    <input type="text" class="form-control" placeholder="" disabled>
+    <input type="text" class="form-control" placeholder="" disabled>
+    </ng-template>
+
+</div>

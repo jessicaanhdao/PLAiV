@@ -22,14 +22,14 @@
             </form>
             <div *ngIf= "taskList">
             <ul  class="list-group list-group-flush" *ngFor="let task of taskList ; index as i">
-                <li class="list-group-item">
+                <li class="list-group-item" (focus)="editTask(task)" contenteditable="true">
                     <div class="row">
                         <div class="col-sm-1" (click)="checkTaskDone(task, i)" [class.done]="task.attrs.isDone"><i class="fa fa-check"></i></div>
-                        <div class="col-sm-5" [class.done]="task.attrs.isDone">
+                        <div class="col-sm-5" [class.done]="task.attrs.isDone" >
                             {{task.attrs.name}}
                         </div>
                         <div class="col-sm-5" [class.done]="task.attrs.isDone">
-                            <span style="  text-transform: uppercase;">done by</span> {{task.attrs.doneBy}}
+                            <span style="  text-transform: uppercase;">done by</span><strong> {{task.attrs.doneBy !== "" ? task.attrs.doneBy : "unspecified"  }}</strong>
                         </div>
                         <div class="col-sm-1" style="color : red"
                         (click)="deleteTask(task, i)"><i class="fa fa-times"></i></div>
@@ -45,3 +45,8 @@
             </div>
         </div>
     </div>
+    <script>
+        function editTask(task) {
+        console.log("editing task... "+task.attrs.name);
+        }
+    </script>

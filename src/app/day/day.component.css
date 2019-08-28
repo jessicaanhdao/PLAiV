@@ -1,5 +1,5 @@
 
-.form-control:focus {
+.form-control:focus, li:focus {
     outline: none !important;
     border:1px solid #00c4cf;
     box-shadow: 0 0 10px #00c4cf;

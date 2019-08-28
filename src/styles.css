@@ -11,3 +11,10 @@ h1, h2, h3, h4, h5, h6 {
     /* font-family: 'Love Ya Like A Sister', cursive; */
     font-family: 'salmaregular', cursive;
    }
+/*  */
+.form-control:focus{
+outline: none !important;
+border: 1px solid #00c4cf !important;
+box-shadow: 0 0 10px #00c4cf !important;
+transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
