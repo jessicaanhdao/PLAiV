@@ -3,35 +3,35 @@
 <div class="col-md-4 col-sm-12 mx-auto" [routerLink]="['/2019/'+days[1]]">
     <h4>Monday</h4>
     <p>{{days[1]}}</p>
-    <app-week-cell [tasks] = "monTasks"></app-week-cell>
+    <app-week-cell [tasks] = "monTasks" [date] = "days[1]"></app-week-cell>
 </div>
 <div class="col-md-4 col-sm-12">
     <h4>Tuesday</h4>
     <p>{{days[2]}}</p>
-    <app-week-cell [tasks] = "tueTasks"></app-week-cell>
+    <app-week-cell [tasks] = "tueTasks" [date] = "days[2]"></app-week-cell>
 
 </div>
 <div class="col-md-4 col-sm-12">
     <h4>Wednesday</h4>
     <p>{{days[3]}}</p>
-    <app-week-cell [tasks] = "wedTasks"></app-week-cell>
+    <app-week-cell [tasks] = "wedTasks" [date] = "days[3]"></app-week-cell>
 </div>
 <!-- </div> -->
 <!-- <div class="row"> -->
 <div class="col-md-4 col-sm-12">
     <h4>Thursday</h4>
     <p>{{days[4]}}</p>
-    <app-week-cell [tasks] = "thuTasks"></app-week-cell>
+    <app-week-cell [tasks] = "thuTasks" [date] = "days[4]"></app-week-cell>
 </div>
 <div class="col-md-4 col-sm-12">
     <h4>Friday</h4>
     <p>{{days[5]}}</p>
-    <app-week-cell [tasks] = "friTasks"></app-week-cell>
+    <app-week-cell [tasks] = "friTasks" [date] = "days[5]"></app-week-cell>
 </div>
 <div class="col-md-4 col-sm-12">
     <h4 tooltip="you shouldn't have tasks here">The Weekends</h4>
     <p>{{days[0]}},{{days[6]}}</p>
-    <app-week-cell [tasks] = "weekendTasks"></app-week-cell>
+    <app-week-cell [tasks] = "weekendTasks" [date] = "days[6]"></app-week-cell>
 
 </div>
 </div>

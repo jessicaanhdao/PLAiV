@@ -1,4 +1,5 @@
-<div class="md-form" style="height: 200px; overflow-x:hidden; overflow-y: scroll">
+<div class="md-form" style="height: 200px; overflow-x:hidden; overflow-y: scroll"
+[routerLink]="['/2019/'+date]">
     <ng-template [ngIf]="tasks.length > 0">
         <input type="text" class="form-control" *ngFor="let task of tasks" value="{{task.attrs.name}}" disabled>
     </ng-template>

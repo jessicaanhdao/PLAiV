@@ -43,8 +43,9 @@ export class DayContainerComponent implements OnInit {
       let month = params['month'];
       let date = params['date'];
       this.radiksDate = "2019/"+month+"/"+date
-      if (month !== null && date !== null) {
+      if (month !== undefined && date !== undefined) {
         this.currentMoment = moment(this.radiksDate,"YYYY/MM/DD")
+        this.viewDate = this.currentMoment.format('dddd, MMMM DD, YYYY')
         console.log(`${month},${date}`);
         if (moment(this.today).isSame(this.paramsDate)) {
           console.log("today")
@@ -64,27 +65,13 @@ export class DayContainerComponent implements OnInit {
   }
   prevDay() {
     this.currentMoment.subtract(1,"days")
-    // this.viewDate = this.currentMoment.format('dddd, MMMM DD, YYYY')
     this.radiksDate = this.currentMoment.format("YYYY/MM/DD")
     this.router.navigate(['/'+this.radiksDate ])
-
-    // const url = this
-    //     .router
-    //     .createUrlTree([this.radiksDate], {})
-    //     .toString();
-    // this.location.go(url)
-    // this.readURL()
-    // console.log("get state "+this.location.path())
-
   }
 
   nextDay() {
     this.currentMoment.add(1,"days")
-    // this.viewDate = this.currentMoment.format('dddd, MMMM DD, YYYY')
     this.radiksDate = this.currentMoment.format("YYYY/MM/DD")
     this.router.navigate(['/'+this.radiksDate ])
-
-    // this.location.go(this.radiksDate)
-    // this.readURL()
   }
 }

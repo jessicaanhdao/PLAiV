@@ -25,7 +25,7 @@
                 <tbody>
                     <tr *ngFor="let task of taskList ; index as i">
                         <td (click)="checkTaskDone(task, i)" [class.done]="task.attrs.isDone"><i class="fa fa-check fa-2x"></i></td>
-                        <td tooltip ="cannot edit">
+                        <td tooltip ="click on to edit undone tasks">
                             <input class="form-control" type="text" 
                             style="border:none; border-bottom:#bdbdbd 1px solid; border-radius: 0" 
                             [class.done]="task.attrs.isDone"
