@@ -31,25 +31,25 @@ export class DayContainerComponent implements OnInit {
 
     setInterval(() => {
       if (this.isToday == true) {
-        // console.log("time..."+this.currentTime)
         var localMoment = moment()
         this.currentTime = localMoment.format('LTS');
-      // this.currentTime = this.currentMoment.format('LTS')
       }
     }, 1000)  
   }
   readURL() {
-    console.log("param map "+this.activatedRoute.paramMap)
-    console.log("snapshot "+this.activatedRoute.snapshot.params)
-    
-    this.activatedRoute.paramMap.subscribe(params => {
-      let month = params.get('month');
-      let date = params.get('date');
-      this.paramsDate = "2019/"+month+"/"+date
-      console.log(`${month},${date}`);
-      if (moment(this.today).isSame(this.paramsDate)) {
-        console.log("today")
-        this.isToday = true;
+    // console.log("param map "+this.activatedRoute.paramMap)
+    // console.log("snapshot "+this.activatedRoute.snapshot.params)
+    this.activatedRoute.params.subscribe(params => {
+      let month = params['month'];
+      let date = params['date'];
+      this.radiksDate = "2019/"+month+"/"+date
+      if (month !== null && date !== null) {
+        this.currentMoment = moment(this.radiksDate,"YYYY/MM/DD")
+        console.log(`${month},${date}`);
+        if (moment(this.today).isSame(this.paramsDate)) {
+          console.log("today")
+          this.isToday = true;
+        }
       }
     });
   }
@@ -57,20 +57,34 @@ export class DayContainerComponent implements OnInit {
     this.taskDataService.fetchTaskListUnDone(this.radiksDate)
     .then(tasks => this.undone = tasks.length);
     this.readURL()
+    this.viewDate = this.currentMoment.format('dddd, MMMM DD, YYYY')
+    this.currentTime = this.currentMoment.format('LTS')
+    this.radiksDate = this.currentMoment.format("YYYY/MM/DD")
+    console.log("get state "+this.location.path())
   }
   prevDay() {
     this.currentMoment.subtract(1,"days")
-    this.viewDate = this.currentMoment.format('dddd, MMMM DD, YYYY')
+    // this.viewDate = this.currentMoment.format('dddd, MMMM DD, YYYY')
     this.radiksDate = this.currentMoment.format("YYYY/MM/DD")
-    this.location.go(this.radiksDate)
-    this.readURL()
+    this.router.navigate(['/'+this.radiksDate ])
+
+    // const url = this
+    //     .router
+    //     .createUrlTree([this.radiksDate], {})
+    //     .toString();
+    // this.location.go(url)
+    // this.readURL()
+    // console.log("get state "+this.location.path())
+
   }
 
   nextDay() {
     this.currentMoment.add(1,"days")
-    this.viewDate = this.currentMoment.format('dddd, MMMM DD, YYYY')
+    // this.viewDate = this.currentMoment.format('dddd, MMMM DD, YYYY')
     this.radiksDate = this.currentMoment.format("YYYY/MM/DD")
-    this.location.go(this.radiksDate)
-    this.readURL()
+    this.router.navigate(['/'+this.radiksDate ])
+
+    // this.location.go(this.radiksDate)
+    // this.readURL()
   }
 }

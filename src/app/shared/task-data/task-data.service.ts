@@ -63,8 +63,16 @@ export class TaskDataService {
     } catch(e) {
       console.error("cannot update task "+e.message)
     }
-
   }
   
-  
+  async editTask(task)  {
+    task.update({
+      name : task.attrs.name
+    })
+    try {
+      await task.save()
+    } catch(e) {
+      console.error("cannot update task name "+e.message)
+    }
+  }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import * as moment from 'moment';
 import { ActivatedRoute } from "@angular/router";
 import { TaskDataService } from '../shared/task-data/task-data.service';
+
 // import Task from '../models/task'
 declare var $: any;
 
@@ -37,8 +38,9 @@ export class DayComponent implements OnInit, OnChanges {
     await this.fetchTasks()
 
   }
-  editTask(task) {
+  async editTask(task) {
     console.log("editing task... "+task.attrs.name);
+    await this.taskDataService.editTask(task);
   }
   filterBy(prop: string) {
     return this.taskList.sort((a, b ) =>  {

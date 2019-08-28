@@ -5,8 +5,21 @@
     box-shadow: 0 0 10px #00c4cf;
     /* transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out; */
 }
+.form-control:disabled {
+    background-color: white;
+    /* cursor: not-allowed; */
+    /* pointer-events: all !important; */
 
+}
 .done {
     color : #00c4cf;
     text-decoration: line-through    
+}
+
+input, td {
+    cursor: url('../../assets/photos/pencil-cursor.png'), default;  
+}
+
+tr input:disabled {
+    /* cursor: not-allowed; */
 }

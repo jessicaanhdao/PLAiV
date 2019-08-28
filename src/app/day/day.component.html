@@ -21,21 +21,26 @@
                 </div>
             </form>
             <div *ngIf= "taskList">
-            <ul  class="list-group list-group-flush" *ngFor="let task of taskList ; index as i">
-                <li class="list-group-item" (focus)="editTask(task)" contenteditable="true">
-                    <div class="row">
-                        <div class="col-sm-1" (click)="checkTaskDone(task, i)" [class.done]="task.attrs.isDone"><i class="fa fa-check"></i></div>
-                        <div class="col-sm-5" [class.done]="task.attrs.isDone" >
-                            {{task.attrs.name}}
-                        </div>
-                        <div class="col-sm-5" [class.done]="task.attrs.isDone">
-                            <span style="  text-transform: uppercase;">done by</span><strong> {{task.attrs.doneBy !== "" ? task.attrs.doneBy : "unspecified"  }}</strong>
-                        </div>
-                        <div class="col-sm-1" style="color : red"
-                        (click)="deleteTask(task, i)"><i class="fa fa-times"></i></div>
-                    </div>
-                </li>
-            </ul>
+            <table class="table">
+                <tbody>
+                    <tr *ngFor="let task of taskList ; index as i">
+                        <td (click)="checkTaskDone(task, i)" [class.done]="task.attrs.isDone"><i class="fa fa-check fa-2x"></i></td>
+                        <td tooltip ="cannot edit">
+                            <input class="form-control" type="text" 
+                            style="border:none; border-bottom:#bdbdbd 1px solid; border-radius: 0" 
+                            [class.done]="task.attrs.isDone"
+                            (blur)="editTask(task)" (keyup.enter)="editTask"
+                            [(ngModel)]= "task.attrs.name"
+                            [disabled]="task.attrs.isDone"
+                            
+                           /></td>
+                        <td [class.done]="task.attrs.isDone" ><span style="  text-transform: uppercase;">done by</span><strong> {{task.attrs.doneBy !== "" ? task.attrs.doneBy : "unspecified"  }}</strong>
+                        </td>
+                        <td><i class="fa fa-times fa-2x" style="color : red"
+                            (click)="deleteTask(task, i)"></i></td>
+                    </tr>
+                </tbody>
+            </table>
             </div>
             <div *ngIf= "!taskList">
                 loading tasks....
@@ -45,8 +50,4 @@
             </div>
         </div>
     </div>
-    <script>
-        function editTask(task) {
-        console.log("editing task... "+task.attrs.name);
-        }
-    </script>
+    

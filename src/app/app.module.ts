@@ -16,7 +16,8 @@ import { WeekComponent } from './week/week.component';
 import { DayContainerComponent } from './day-container/day-container.component';
 import { WeekContainerComponent } from './week-container/week-container.component';
 import { WeekCellComponent } from './week-cell/week-cell.component';
-
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { MatTooltipModule } from '@angular/material/tooltip';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,10 @@ import { WeekCellComponent } from './week-cell/week-cell.component';
     AppRoutingModule,
     AppBootstrapModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    // BrowserAnimationsModule,
+    // MatTooltipModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
