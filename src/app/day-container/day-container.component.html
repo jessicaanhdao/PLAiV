@@ -10,7 +10,7 @@
         </div>
         <div class="col-sm-4 mx-auto">
             <h2 *ngIf= "isToday">{{currentTime}}</h2>
-            <p>{{undone}} task completed</p>
+            <p>{{taskUndone}}/{{totalTasks}} task incompleted</p>
         </div>
         <div class="col-md-1">
             <button class="btn btn-outline-dark" (click)="nextDay()"><i class="fas fa-chevron-right"></i></button>

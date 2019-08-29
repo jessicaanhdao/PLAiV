@@ -28,14 +28,21 @@ export class TaskDataService {
   }
 
   async fetchTaskListUnDone(date : String) {
-    let TaskModel : any = Task
-    return await TaskModel.fetchOwnList({ dateCreated : date, isDone: false})
+    let taskList = await this.fetchTaskListByDate(date);
+    return await this.countUndone(taskList);
+  }
+  countUndone(taskList) {
+    let taskUndone = 0
+    for (let task of taskList) {
+      if (!task.attrs.isDone) {
+        taskUndone+=1
+      }
+    }
+    return taskUndone;
   }
 
   async addNewTask(task) {
     let TaskModel : any = Task
-    // console.log(`${task.TaskName} ${task.TaskID} ${task.DoneBy} ${task.IsDone} ${task.PostedDate}`);
-
     const newTask = new TaskModel({
       dateCreated : task.PostedDate,
       doneBy: task.DoneBy,
@@ -54,7 +61,6 @@ export class TaskDataService {
     }
   }
   async checkTaskDone(task) {
-    // return this.http.put(this.URL+'/'+id+'?postedDate='+posteddate, task, httpOptions)
     task.update({
       isDone : !task.attrs.isDone
     })

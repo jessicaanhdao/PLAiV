@@ -30,11 +30,11 @@ export class CellComponent implements OnInit {
     }
     var taskCount = 0
     try {
-      taskCount= await this.taskService.fetchTaskListByDate(this.dateString).then((tasks) => {return tasks.length })
+      taskCount= await this.taskService.fetchTaskListUnDone(this.dateString)
     } catch(e) {
       console.error(e.message)
     }
-    taskCount > 0 ? (taskCount > 1 ? this.num = taskCount + " tasks":this.num = taskCount + " task"  ) : ""
+    taskCount > 0 ? (taskCount > 1 ? this.num = taskCount + " incomplete":this.num = taskCount + " incomplete"  ) : ""
     return this.num;
 
   }

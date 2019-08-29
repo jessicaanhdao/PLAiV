@@ -36,8 +36,9 @@
                            /></td>
                         <td [class.done]="task.attrs.isDone" ><span style="  text-transform: uppercase;">done by</span><strong> {{task.attrs.doneBy !== "" ? task.attrs.doneBy : "unspecified"  }}</strong>
                         </td>
-                        <td><i class="fa fa-times fa-2x" style="color : red"
-                            (click)="deleteTask(task, i)"></i></td>
+                        <td (click)="deleteTask(task, i)">
+                            <i class="fa fa-times fa-2x" style="color : red"></i>
+                        </td>
                     </tr>
                 </tbody>
             </table>

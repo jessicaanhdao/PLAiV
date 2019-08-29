@@ -1,7 +1,9 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Output, ViewContainerRef } from '@angular/core';
 import * as moment from 'moment';
 import { ActivatedRoute } from "@angular/router";
 import { TaskDataService } from '../shared/task-data/task-data.service';
+import { DayContainerComponent } from '../day-container/day-container.component';
+import Task from '../models/task';
 
 // import Task from '../models/task'
 declare var $: any;
@@ -14,15 +16,14 @@ declare var $: any;
 })
 export class DayComponent implements OnInit, OnChanges {
   
-  taskList : [];
+  taskList : Task[];
   newTask = {  TaskName : "", DoneBy : "", IsDone : false, PostedDate : ""}
   isToday = true;
-  // radiksDate : string;
 
   @Input() currentMoment : moment.Moment ;
   @Input() radiksDate : string ;
-  
-  constructor( private taskDataService : TaskDataService  ) { 
+  constructor( private taskDataService : TaskDataService,
+    private viewContainerRef: ViewContainerRef ) { 
   }
   async addNewTask() {
     await this.taskDataService.addNewTask(this.newTask);
@@ -32,6 +33,7 @@ export class DayComponent implements OnInit, OnChanges {
   }
   async checkTaskDone(task ,i) {
     this.taskDataService.checkTaskDone(task)
+    await this.countUndone()
   }
   async deleteTask(task, i) {
     await this.taskDataService.deleteTask(task)
@@ -39,7 +41,6 @@ export class DayComponent implements OnInit, OnChanges {
 
   }
   async editTask(task) {
-    console.log("editing task... "+task.attrs.name);
     await this.taskDataService.editTask(task);
   }
   filterBy(prop: string) {
@@ -55,15 +56,24 @@ export class DayComponent implements OnInit, OnChanges {
     this.fetchTasks()
   }
   ngOnInit() {
-    // console.log( `moment ${this.currentMoment} vs today ${this.today} `)
     this.radiksDate = this.currentMoment.format("YYYY/MM/DD")
-
   }
-
+  totalTasks = 0
   async fetchTasks(){
     this.newTask = {TaskName : "", DoneBy : "", IsDone : false, PostedDate : this.radiksDate}
     this.taskList = await this.taskDataService.fetchTaskListByDate( this.radiksDate)
-    // console.log("Task list "+this.taskList.length)
-
+    this.getParentComponent().totalTasks = await this.taskList.length;
+    await this.countUndone();
   }
+  taskUndone = 0
+  countUndone() {
+    this.taskUndone = this.taskDataService.countUndone(this.taskList);
+    this.getParentComponent().taskUndone = this.taskUndone
+    return this.taskUndone
+  }
+  getParentComponent(): DayContainerComponent{
+    return this.viewContainerRef[ '_data' ].componentView.component.viewContainerRef[ '_view' ]
+    .component
+  }
+
 }

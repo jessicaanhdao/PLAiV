@@ -1,17 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import * as moment from 'moment';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TaskDataService } from '../shared/task-data/task-data.service';
 import { Location } from '@angular/common';
+import { DayComponent } from '../day/day.component';
 
 @Component({
   selector: 'app-day-container',
   templateUrl: './day-container.component.html',
   styleUrls: ['./day-container.component.css']
 })
-export class DayContainerComponent implements OnInit {
+export class DayContainerComponent implements OnInit, AfterViewInit {
   today = moment().format("YYYY/MM/DD");
-  undone = 0;
+  taskUndone = 0;
+  totalTasks = 0;
   //get current moment object
   currentMoment = moment();
   
@@ -22,7 +24,6 @@ export class DayContainerComponent implements OnInit {
   viewDate = this.currentMoment.format('dddd, MMMM DD, YYYY')
   currentTime = this.currentMoment.format('LTS')
   isToday = false;
-
   constructor(private activatedRoute: ActivatedRoute, 
     private router : Router, 
     private taskDataService : TaskDataService,
@@ -55,13 +56,10 @@ export class DayContainerComponent implements OnInit {
     });
   }
   ngOnInit() {
-    this.taskDataService.fetchTaskListUnDone(this.radiksDate)
-    .then(tasks => this.undone = tasks.length);
     this.readURL()
     this.viewDate = this.currentMoment.format('dddd, MMMM DD, YYYY')
     this.currentTime = this.currentMoment.format('LTS')
     this.radiksDate = this.currentMoment.format("YYYY/MM/DD")
-    console.log("get state "+this.location.path())
   }
   prevDay() {
     this.currentMoment.subtract(1,"days")
@@ -74,4 +72,11 @@ export class DayContainerComponent implements OnInit {
     this.radiksDate = this.currentMoment.format("YYYY/MM/DD")
     this.router.navigate(['/'+this.radiksDate ])
   }
+
+  @ViewChild(DayComponent, {static: false}) dayComponent : DayComponent;
+  async ngAfterViewInit() {
+    // console.log("Task in parent "+this.dayComponent.taskUndone);
+    // this.taskUndone = await this.dayComponent.ngOnChanges();
+  }
 }
+
