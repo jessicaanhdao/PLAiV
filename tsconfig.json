@@ -26,6 +26,6 @@
     "strictInjectionParameters": true
   },
   "exclude": [
-    "node_modules/**/*.js"
+    "node_modules/*"
   ]
 }
