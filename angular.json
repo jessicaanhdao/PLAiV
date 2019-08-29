@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "planner": {
+    "plaiv": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/planner",
+            "outputPath": "dist/plaiv",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -73,18 +73,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "planner:build"
+            "browserTarget": "plaiv:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "planner:build:production"
+              "browserTarget": "plaiv:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "planner:build"
+            "browserTarget": "plaiv:build"
           }
         },
         "test": {
@@ -124,15 +124,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "planner:serve"
+            "devServerTarget": "plaiv:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "planner:serve:production"
+              "devServerTarget": "plaiv:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "planner"
+  "defaultProject": "plaiv"
 }

@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 
 })
 export class AppComponent {
-  title = 'planner';
+  title = 'PLAiV';
 
   constructor(public auth: AuthService, private router: Router) {
 
