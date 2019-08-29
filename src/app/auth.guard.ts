@@ -7,15 +7,15 @@ import { AuthService } from './shared/auth/auth.service';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
-  constructor(private auth : AuthService) {
+  constructor(private auth: AuthService) {
 
   }
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       return this.auth.getLoggedIn().then((loggedin) => {
-        console.log("Checking guard "+loggedin)
-        return loggedin
+        console.log('Checking guard ' + loggedin);
+        return loggedin;
       });
   }
   canActivateChild(

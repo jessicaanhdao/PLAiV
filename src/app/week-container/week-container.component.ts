@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as moment from 'moment';
+import moment from 'moment';
 
 @Component({
   selector: 'app-week-container',
@@ -8,42 +8,42 @@ import * as moment from 'moment';
 })
 export class WeekContainerComponent implements OnInit {
 
-  week = moment()
-  
-  weekStart = this.week.clone().startOf('week');
-  weekEnd = this.week.clone().endOf('week');
-  viewWeekStart = this.week.clone().startOf('week').format("MM/DD");
-  viewWeekEnd = this.week.clone().endOf('week').format("MM/DD");
-
   constructor() { }
 
+  week = moment();
+
+  weekStart = this.week.clone().startOf('week');
+  weekEnd = this.week.clone().endOf('week');
+  viewWeekStart = this.week.clone().startOf('week').format('MM/DD');
+  viewWeekEnd = this.week.clone().endOf('week').format('MM/DD');
+  days = [];
+
   ngOnInit() {
-    console.log("start end "+this.weekStart + " "+this.weekEnd)
-    this.generateDays()
+    console.log('start end ' + this.weekStart + ' ' + this.weekEnd);
+    this.generateDays();
   }
-  prevWeek(){
-    this.week.subtract(1,'weeks')
-    this.days = []
-    this.update()
-    this.generateDays()
+  prevWeek() {
+    this.week.subtract(1, 'weeks');
+    this.days = [];
+    this.update();
+    this.generateDays();
   }
-  nextWeek(){
-    this.week.add(1,'weeks')
-    this.days = []
-    this.update()
-    this.generateDays()
+  nextWeek() {
+    this.week.add(1, 'weeks');
+    this.days = [];
+    this.update();
+    this.generateDays();
   }
-  update(){
+  update() {
     this.weekStart = this.week.clone().startOf('week');
     this.weekEnd = this.week.clone().endOf('week');
-    this.viewWeekStart = this.week.clone().startOf('week').format("MM/DD");
-    this.viewWeekEnd = this.week.clone().endOf('week').format("MM/DD");
+    this.viewWeekStart = this.week.clone().startOf('week').format('MM/DD');
+    this.viewWeekEnd = this.week.clone().endOf('week').format('MM/DD');
   }
-  days = [];
   generateDays() {
-    for (var i = 0; i <= 6; i++) {
-      this.days.push(moment(this.weekStart).add(i, 'days').format("MM/DD"));
-    } 
+    for (let i = 0; i <= 6; i++) {
+      this.days.push(moment(this.weekStart).add(i, 'days').format('MM/DD'));
+    }
     // console.log("monday tuesday"+this.days[1]+" "+this.days[2])
   }
 

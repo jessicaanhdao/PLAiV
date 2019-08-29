@@ -1,7 +1,7 @@
 import {Model} from 'radiks';
 
 export default class Task extends Model {
-    static className = 'Task'
+    static className = 'Task';
 
     static schema = {
         // username: { type: String, required: true, decrypted: true },
@@ -10,5 +10,5 @@ export default class Task extends Model {
         isDone : { type : Boolean, required: true},
         name: { type: String, required: true },
         description: { type: String }
-    }
+    };
 }

@@ -13,12 +13,12 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'planner';
 
-  constructor(public auth : AuthService, private router : Router){
+  constructor(public auth: AuthService, private router: Router) {
 
   }
 
-  ngOnInit(){
-    if(this.auth.handleSignedIn()) {
+  ngOnInit() {
+    if (this.auth.handleSignedIn()) {
       // this.router.navigate([''])
 
     }

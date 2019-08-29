@@ -6,8 +6,8 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./week-cell.component.css']
 })
 export class WeekCellComponent implements OnInit {
-  @Input() tasks : []
-  @Input() date : ""
+  @Input() tasks: [];
+  @Input() date: '';
   constructor() { }
 
   ngOnInit() {

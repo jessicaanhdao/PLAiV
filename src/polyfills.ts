@@ -60,8 +60,8 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 // @ts-ignore
 // window.Buffer = window.Buffer || require('buffer').Buffer;
 (window as any).global.Buffer = (window as any).global.Buffer || require('buffer').Buffer;
-import * as process from 'process';
-window['process'] = process;
+import process from 'process';
+(window as any).process = process;
 // (window as any).process = {
 //     env: { DEBUG: undefined },
 //   };

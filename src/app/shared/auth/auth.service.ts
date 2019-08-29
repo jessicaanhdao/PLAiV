@@ -13,12 +13,12 @@ import { User, configure, getConfig } from 'radiks';
 // headers.append("Access-Control-Allow-Origin","*");
 
 export class AuthService {
-  appConfig = new AppConfig(['store_write', 'publish_data'])
-  userSession = new UserSession({ appConfig: this.appConfig })
+  appConfig = new AppConfig(['store_write', 'publish_data']);
+  userSession = new UserSession({ appConfig: this.appConfig });
   config = {
     apiServer: 'http://localhost:5000',
     userSession : this.userSession
-  }
+  };
   hi = configure( {
     apiServer: 'http://localhost:5000',
     userSession : this.userSession
@@ -26,32 +26,32 @@ export class AuthService {
 
   constructor() { }
   isLoggedIn = false;
-  login(){
+  login() {
     this.userSession.redirectToSignIn();
     // this.loggedIn = this.userSession.isUserSignedIn();
   }
-  logout(){
-    this.userSession.signUserOut(window.location.origin)
-    this.isLoggedIn = false
+  logout() {
+    this.userSession.signUserOut(window.location.origin);
+    this.isLoggedIn = false;
   }
-  async handleSignedIn(){
+  async handleSignedIn() {
     // this.userSession = getConfig();
     if (this.userSession.isSignInPending()) {
       await this.userSession.handlePendingSignIn().then(() => {
-        console.log("hi signing u in...")
+        console.log('hi signing u in...');
         this.isLoggedIn = true;
-      })
+      });
       await User.createWithCurrentUser();
-    } else if (this.userSession.isUserSignedIn()){
-      console.log("hi u signed in...")
+    } else if (this.userSession.isUserSignedIn()) {
+      console.log('hi u signed in...');
       this.isLoggedIn = true;
     }
     return this.isLoggedIn;
   }
-  setLoggedIn(value : boolean){
+  setLoggedIn(value: boolean) {
     this.isLoggedIn = value;
   }
-  async getLoggedIn(){
+  async getLoggedIn() {
     return await this.handleSignedIn();
   }
 }

@@ -9,11 +9,11 @@ import { AuthService } from '../shared/auth/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private auth : AuthService) { }
+  constructor(private auth: AuthService) { }
 
   ngOnInit() {
   }
   login() {
-    this.auth.login()
+    this.auth.login();
   }
 }
