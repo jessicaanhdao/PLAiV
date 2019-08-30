@@ -15,12 +15,10 @@ import { User, configure, getConfig } from 'radiks';
 export class AuthService {
   appConfig = new AppConfig(['store_write', 'publish_data']);
   userSession = new UserSession({ appConfig: this.appConfig });
-  config = {
-    apiServer: 'http://localhost:5000',
-    userSession : this.userSession
-  };
+  apiServer = process.env.NODE_ENV === 'development' ? process.env.API_URL_DEV : process.env.API_URL_PROD
+  
   hi = configure( {
-    apiServer: 'http://localhost:5000',
+    apiServer: this.apiServer,
     userSession : this.userSession
   } );
 
