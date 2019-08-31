@@ -19,7 +19,7 @@ export class WeekContainerComponent implements OnInit {
   days = [];
 
   ngOnInit() {
-    console.log('start end ' + this.weekStart + ' ' + this.weekEnd);
+    // console.log('start end ' + this.weekStart + ' ' + this.weekEnd);
     this.generateDays();
   }
   prevWeek() {

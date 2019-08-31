@@ -15,7 +15,7 @@ import { User, configure, getConfig } from 'radiks';
 export class AuthService {
   appConfig = new AppConfig(['store_write', 'publish_data']);
   userSession = new UserSession({ appConfig: this.appConfig });
-  apiServer = process.env.NODE_ENV === 'development' ? process.env.API_URL_DEV : process.env.API_URL_PROD
+  apiServer = process.env.NODE_ENV === 'development' ?'http://localhost:5000' : 'https://plaiv-server.herokuapp.com'
   
   hi = configure( {
     apiServer: this.apiServer,
@@ -33,6 +33,7 @@ export class AuthService {
     this.isLoggedIn = false;
   }
   async handleSignedIn() {
+    // console.log("node env "+process.env.NODE_ENV+"process.env.API_URL_DEV  "+process.env.API_URL_DEV );
     // this.userSession = getConfig();
     if (this.userSession.isSignInPending()) {
       await this.userSession.handlePendingSignIn().then(() => {

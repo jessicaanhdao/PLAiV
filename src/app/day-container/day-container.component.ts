@@ -49,9 +49,9 @@ export class DayContainerComponent implements OnInit, AfterViewInit {
       if (month !== undefined && date !== undefined) {
         this.currentMoment = moment(this.radiksDate, 'YYYY/MM/DD');
         this.viewDate = this.currentMoment.format('dddd, MMMM DD, YYYY');
-        console.log(`${month},${date}`);
+        // console.log(`${month},${date}`);
         if (moment(this.today).isSame(this.paramsDate)) {
-          console.log('today');
+          // console.log('today');
           this.isToday = true;
         }
       }
