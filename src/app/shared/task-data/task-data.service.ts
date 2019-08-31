@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import  Task  from '../../models/task';
+import Task from '../../models/task';
 import { HttpHeaders } from '@angular/common/http';
 import { getConfig } from 'radiks';
 
@@ -20,14 +20,14 @@ export class TaskDataService {
   constructor(private http: HttpClient) {   }
   // URL = "http://localhost:52389/api/task"
 
-  async fetchTaskListByDate(date: String) {
+  async fetchTaskListByDate(date: string) {
     const TaskModel: any = Task;
     console.log('fetching task list');
 
     return await TaskModel.fetchOwnList({ dateCreated : date});
   }
 
-  async fetchTaskListUnDone(date: String) {
+  async fetchTaskListUnDone(date: string) {
     const taskList = await this.fetchTaskListByDate(date);
     return await this.countUndone(taskList);
   }

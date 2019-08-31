@@ -16,7 +16,7 @@ export class MonthComponent implements OnInit, OnChanges {
   days = [];
   totalCount = 0;
   @Input() currentMonth: string;
-  @Input() daysOfMonth: Number;
+  @Input() daysOfMonth: number;
 
   constructor(private taskService: TaskDataService) {
   }
@@ -38,10 +38,5 @@ export class MonthComponent implements OnInit, OnChanges {
   ngOnChanges() {
     this.loadDays(this.daysOfMonth);
   }
-
-  ngAfterViewInit() {
-  }
-
-
 
 }

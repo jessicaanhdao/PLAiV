@@ -18,7 +18,7 @@ export class DayContainerComponent implements OnInit, AfterViewInit {
 
 
     setInterval(() => {
-      if (this.isToday == true) {
+      if (this.isToday === true) {
         const localMoment = moment();
         this.currentTime = localMoment.format('LTS');
       }

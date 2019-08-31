@@ -1,4 +1,4 @@
-import { Component, OnInit , Input} from '@angular/core';
+import { Component, OnInit , Input, OnChanges} from '@angular/core';
 import { TaskDataService } from '../shared/task-data/task-data.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { TaskDataService } from '../shared/task-data/task-data.service';
   templateUrl: './week.component.html',
   styleUrls: ['./week.component.css']
 })
-export class WeekComponent implements OnInit {
+export class WeekComponent implements OnInit, OnChanges {
   @Input() days: number[];
   tasks: [][];
   monTasks: number[];

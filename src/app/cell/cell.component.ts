@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import moment from 'moment';
 import { TaskDataService } from '../shared/task-data/task-data.service';
 
@@ -7,9 +7,9 @@ import { TaskDataService } from '../shared/task-data/task-data.service';
   templateUrl: './cell.component.html',
   styleUrls: ['./cell.component.css']
 })
-export class CellComponent implements OnInit {
+export class CellComponent implements OnInit, OnChanges {
   @Input() currentMonth: string;
-  @Input() day: Number;
+  @Input() day: number;
 
   constructor(private taskService: TaskDataService) { }
   num = '';
@@ -34,7 +34,7 @@ export class CellComponent implements OnInit {
     } catch (e) {
       console.error(e.message);
     }
-    taskCount > 0 ? (taskCount > 1 ? this.num = taskCount + ' incomplete' : this.num = taskCount + ' incomplete'  ) : '';
+    taskCount > 0 ?  this.num = taskCount + ' incomplete' : '';
     return this.num;
 
   }

@@ -72,7 +72,7 @@ export class DayComponent implements OnInit, OnChanges {
     return this.taskUndone;
   }
   getParentComponent(): DayContainerComponent {
-    return this.viewContainerRef['_data'].componentView.component.viewContainerRef['_view']
+    return this.viewContainerRef._data.componentView.component.viewContainerRef._view
     .component;
   }
 

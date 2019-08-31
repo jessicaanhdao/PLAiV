@@ -15,8 +15,8 @@ import { User, configure, getConfig } from 'radiks';
 export class AuthService {
   appConfig = new AppConfig(['store_write', 'publish_data']);
   userSession = new UserSession({ appConfig: this.appConfig });
-  apiServer = process.env.NODE_ENV === 'development' ?'http://localhost:5000' : 'https://plaiv-server.herokuapp.com'
-  
+  apiServer = process.env.NODE_ENV === 'development' ? 'http://localhost:5000' : 'https://plaiv-server.herokuapp.com';
+
   hi = configure( {
     apiServer: this.apiServer,
     userSession : this.userSession
