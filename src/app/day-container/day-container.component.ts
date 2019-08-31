@@ -66,7 +66,7 @@ export class DayContainerComponent implements OnInit, AfterViewInit {
   prevDay() {
     this.currentMoment.subtract(1, 'days');
     this.radiksDate = this.currentMoment.format('YYYY/MM/DD');
-    this.router.navigate(['/' + this.radiksDate ]);
+    this.router.navigate(['/' + this.radiksDate ],);
   }
 
   nextDay() {

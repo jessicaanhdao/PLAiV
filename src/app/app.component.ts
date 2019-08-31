@@ -14,12 +14,12 @@ export class AppComponent implements OnInit {
   title = 'PLAiV';
 
   constructor(public auth: AuthService, private router: Router) {
-
+    this.auth.handleSignedIn()
   }
 
   ngOnInit() {
-    if (this.auth.handleSignedIn()) {
-    }
+    // if () {
+    // }
   }
 
 }

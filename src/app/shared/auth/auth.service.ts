@@ -5,6 +5,7 @@ import {
 } from 'blockstack';
 
 import { User, configure, getConfig } from 'radiks';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -22,10 +23,11 @@ export class AuthService {
     userSession : this.userSession
   } );
 
-  constructor() { }
+  constructor(private router : Router) { }
   isLoggedIn = false;
   login() {
     this.userSession.redirectToSignIn();
+
     // this.loggedIn = this.userSession.isUserSignedIn();
   }
   logout() {
@@ -37,6 +39,7 @@ export class AuthService {
     // this.userSession = getConfig();
     if (this.userSession.isSignInPending()) {
       await this.userSession.handlePendingSignIn().then(() => {
+        this.router.navigate([''])
         console.log('hi signing u in...');
         this.isLoggedIn = true;
       });

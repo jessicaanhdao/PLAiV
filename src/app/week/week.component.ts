@@ -37,10 +37,10 @@ export class WeekComponent implements OnInit, OnChanges {
     this.thuTasks = await this.taskDataService.fetchTaskListByDate(date);
     date = '2019/' + this.days[5];
     this.friTasks = await this.taskDataService.fetchTaskListByDate(date);
-    date = '2019/' + this.days[0];
-    this.weekendTasks = await this.taskDataService.fetchTaskListByDate(date);
+    // date = '2019/' + this.days[0];
+    // this.weekendTasks = await this.taskDataService.fetchTaskListByDate(date);
     date = '2019/' + this.days[6];
-    this.weekendTasks.push(await this.taskDataService.fetchTaskListByDate(date));
+    this.weekendTasks = (await this.taskDataService.fetchTaskListByDate(date));
 
   }
 
