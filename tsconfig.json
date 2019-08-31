@@ -12,7 +12,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es6",
+    "target": "es2018",
     "typeRoots": [
       "node_modules/@types"
     ],
@@ -26,6 +26,6 @@
     "strictInjectionParameters": true
   },
   "exclude": [
-    "node_modules/*"
+    "node_modules"
   ]
 }
