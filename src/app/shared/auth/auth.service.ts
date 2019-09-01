@@ -27,16 +27,12 @@ export class AuthService {
   isLoggedIn = false;
   login() {
     this.userSession.redirectToSignIn();
-
-    // this.loggedIn = this.userSession.isUserSignedIn();
   }
   logout() {
     this.userSession.signUserOut(window.location.origin);
     this.isLoggedIn = false;
   }
   async handleSignedIn() {
-    // console.log("node env "+process.env.NODE_ENV+"process.env.API_URL_DEV  "+process.env.API_URL_DEV );
-    // this.userSession = getConfig();
     if (this.userSession.isSignInPending()) {
       await this.userSession.handlePendingSignIn().then(() => {
         this.router.navigate([''])

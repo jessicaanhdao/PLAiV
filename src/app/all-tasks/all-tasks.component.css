@@ -1,0 +1,16 @@
+.list-group-item.active {
+    background-color: #00c4cf;
+}
+.list-group-item {
+    border-color: #00c4cf;
+
+}
+span.pencil {
+    background-image: url('../../assets/photos/pencil-cursor.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+
+}

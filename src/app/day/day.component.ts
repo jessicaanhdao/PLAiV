@@ -63,7 +63,9 @@ export class DayComponent implements OnInit, OnChanges {
   async fetchTasks() {
     this.newTask = {TaskName : '', DoneBy : '', IsDone : false, PostedDate : this.radiksDate};
     this.taskList = await this.taskDataService.fetchTaskListByDate( this.radiksDate);
-    this.getParentComponent().totalTasks = await this.taskList.length;
+    if (await this.taskList !== undefined) {
+      this.getParentComponent().totalTasks = await this.taskList.length;
+    }
     await this.countUndone();
   }
   countUndone() {

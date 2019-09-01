@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import Task from '../../models/task';
 import { HttpHeaders } from '@angular/common/http';
 import { getConfig } from 'radiks';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { ErrorModalComponent } from 'src/app/errormodal/errormodal.component';
 
 const httpOptions = {
@@ -19,34 +19,41 @@ const httpOptions = {
 })
 export class TaskDataService {
   taskList: Task[];
+
   constructor(private http: HttpClient, private modalService: NgbModal) {   }
   // URL = "http://localhost:52389/api/task"
 
   async fetchTaskListByDate(date: string) {
     const TaskModel: any = Task;
     try {
-      console.log('fetching task list');
       return await TaskModel.fetchOwnList({ dateCreated : date});
     } catch(e) {
-      let modal = this.modalService.open(ErrorModalComponent);
-      modal.componentInstance.error = e.message;
-      console.error("Failed to fetch task list "+e.message)
+      this.showErrorModal(e, 'Failed to get tasks.')
     }
   }
-
+  async fetchAllTasks() {
+    const TaskModel: any = Task;
+    try {
+      return await TaskModel.fetchOwnList();
+    } catch(e) {
+      this.showErrorModal(e, 'Failed to get tasks.')
+    }
+  }
   async fetchTaskListUnDone(date: string) {
     try {
       const taskList = await this.fetchTaskListByDate(date);
       return await this.countUndone(taskList);
     } catch(e) {
-      console.error("Failed to fetch task list "+e.message)
+      this.showErrorModal(e, 'Failed to get tasks.')
     }
   }
   countUndone(taskList) {
     let taskUndone = 0;
-    for (const task of taskList) {
-      if (!task.attrs.isDone) {
-        taskUndone += 1;
+    if (taskList !== undefined) {
+      for (const task of taskList) {
+        if (!task.attrs.isDone) {
+          taskUndone += 1;
+        }
       }
     }
     return taskUndone;
@@ -61,14 +68,18 @@ export class TaskDataService {
       name: task.TaskName,
       description: ''
     });
-    await newTask.save();
+    try {
+      await newTask.save();      
+    } catch(e) {
+      this.showErrorModal(e,'Failed to add new task.')
+    }
   }
 
   async deleteTask(task) {
     try {
       await task.destroy();
     } catch (e) {
-      console.error('cannot delete task ' + e.message);
+      this.showErrorModal(e,'Failed to delete task.')
     }
   }
   async checkTaskDone(task) {
@@ -78,7 +89,7 @@ export class TaskDataService {
     try {
       await task.save();
     } catch (e) {
-      console.error('cannot update task ' + e.message);
+      this.showErrorModal(e,'Failed to check task.')
     }
   }
 
@@ -89,7 +100,16 @@ export class TaskDataService {
     try {
       await task.save();
     } catch (e) {
-      console.error('cannot update task name ' + e.message);
+      this.showErrorModal(e,'Failed to update task name.')
     }
+  }
+  showErrorModal(e, message){
+    if (document.getElementsByClassName('modal').length === 1 ) {
+      let modal = this.modalService.open(ErrorModalComponent, {windowClass : 'error-modal'});
+      modal.componentInstance.error = message;
+    }
+    // console.log("modal length "+document.getElementsByClassName('modal').length)
+    console.error(`${message} : ${e.message}`);
+
   }
 }

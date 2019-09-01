@@ -18,6 +18,7 @@ import { WeekContainerComponent } from './week-container/week-container.componen
 import { WeekCellComponent } from './week-cell/week-cell.component';
 import { ErrorModalComponent } from './errormodal/errormodal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AllTasksComponent } from './all-tasks/all-tasks.component';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { MatTooltipModule } from '@angular/material/tooltip';
 @NgModule({
@@ -35,6 +36,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     WeekContainerComponent,
     WeekCellComponent,
     ErrorModalComponent,
+    AllTasksComponent,
   ],
   imports: [
     NgbModule,
