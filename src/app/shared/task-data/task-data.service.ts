@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import Task from '../../models/task';
 import { HttpHeaders } from '@angular/common/http';
 import { getConfig } from 'radiks';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ErrorModalComponent } from 'src/app/errormodal/errormodal.component';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -17,19 +19,28 @@ const httpOptions = {
 })
 export class TaskDataService {
   taskList: Task[];
-  constructor(private http: HttpClient) {   }
+  constructor(private http: HttpClient, private modalService: NgbModal) {   }
   // URL = "http://localhost:52389/api/task"
 
   async fetchTaskListByDate(date: string) {
     const TaskModel: any = Task;
-    console.log('fetching task list');
-
-    return await TaskModel.fetchOwnList({ dateCreated : date});
+    try {
+      console.log('fetching task list');
+      return await TaskModel.fetchOwnList({ dateCreated : date});
+    } catch(e) {
+      let modal = this.modalService.open(ErrorModalComponent);
+      modal.componentInstance.error = e.message;
+      console.error("Failed to fetch task list "+e.message)
+    }
   }
 
   async fetchTaskListUnDone(date: string) {
-    const taskList = await this.fetchTaskListByDate(date);
-    return await this.countUndone(taskList);
+    try {
+      const taskList = await this.fetchTaskListByDate(date);
+      return await this.countUndone(taskList);
+    } catch(e) {
+      console.error("Failed to fetch task list "+e.message)
+    }
   }
   countUndone(taskList) {
     let taskUndone = 0;

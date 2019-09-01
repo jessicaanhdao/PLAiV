@@ -18,3 +18,11 @@ border: 1px solid #00c4cf !important;
 box-shadow: 0 0 10px #00c4cf !important;
 transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
+.modal-dialog{
+    position: absolute !important;
+    margin: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    bottom: 0 !important;
+}

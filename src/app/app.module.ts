@@ -16,6 +16,8 @@ import { WeekComponent } from './week/week.component';
 import { DayContainerComponent } from './day-container/day-container.component';
 import { WeekContainerComponent } from './week-container/week-container.component';
 import { WeekCellComponent } from './week-cell/week-cell.component';
+import { ErrorModalComponent } from './errormodal/errormodal.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { MatTooltipModule } from '@angular/material/tooltip';
 @NgModule({
@@ -31,9 +33,11 @@ import { WeekCellComponent } from './week-cell/week-cell.component';
     CellComponent,
     DayContainerComponent,
     WeekContainerComponent,
-    WeekCellComponent
+    WeekCellComponent,
+    ErrorModalComponent,
   ],
   imports: [
+    NgbModule,
     BrowserModule,
     AppRoutingModule,
     AppBootstrapModule,
@@ -41,9 +45,10 @@ import { WeekCellComponent } from './week-cell/week-cell.component';
     HttpClientModule,
     // BrowserAnimationsModule,
     // MatTooltipModule,
-
   ],
+  entryComponents: [ErrorModalComponent],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
 })
 export class AppModule { }

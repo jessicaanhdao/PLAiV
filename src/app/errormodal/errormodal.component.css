@@ -1,0 +1,12 @@
+button {
+    position: absolute;
+    top :  5px;
+    right : 5px;
+}
+
+.modal-body {
+    padding-bottom: 0;
+}
+p {
+    color : red;
+}
