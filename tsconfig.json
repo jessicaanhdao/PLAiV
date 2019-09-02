@@ -7,7 +7,7 @@
     "declaration": true,
     "downlevelIteration": true,
     "experimentalDecorators": true,
-    "esModuleInterop" : true,
+    // "esModuleInterop" : true,
     "allowSyntheticDefaultImports" : true,
     "module": "esnext",
     "moduleResolution": "node",
