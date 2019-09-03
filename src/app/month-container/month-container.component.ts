@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MomentService } from '../shared/moment/moment.service';
+import { MomentService } from '../services/moment/moment.service';
 import moment from 'moment';
 
 @Component({

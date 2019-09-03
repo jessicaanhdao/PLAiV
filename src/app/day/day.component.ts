@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnChanges, Output, ViewContainerRef } from '@angular/core';
 import moment from 'moment';
 import { ActivatedRoute } from '@angular/router';
-import { TaskDataService } from '../shared/task-data/task-data.service';
+import { TaskDataService } from '../services/task-data/task-data.service';
 import { DayContainerComponent } from '../day-container/day-container.component';
 import Task from '../models/task';
 

@@ -3,7 +3,7 @@
     "start_url": ".",
     "description": "Decentralized & Decrypted Digital Planner",
     "icons": [{
-      "src": "https://plaiv.netlify.com/assets/photos/favicon.ico",
+      "src": "https://plaiv.netlify.com/assets/photos/plaiv_icon.png",
       "sizes": "192x192",
       "type": "image/png"
     }]

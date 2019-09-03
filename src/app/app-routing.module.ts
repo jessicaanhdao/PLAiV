@@ -9,6 +9,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { DayContainerComponent } from './day-container/day-container.component';
 import { WeekContainerComponent } from './week-container/week-container.component';
 import { AllTasksComponent } from './all-tasks/all-tasks.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 const routes: Routes = [
   { path : '', component: DayContainerComponent,  canActivate : [AuthGuard]},
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path : 'week', component: WeekContainerComponent, canActivate : [AuthGuard]},
   { path : 'month', component: MonthContainerComponent, canActivate : [AuthGuard]},
   { path : 'alltasks', component: AllTasksComponent, canActivate : [AuthGuard]},
+  { path : 'feedback', component: FeedbackComponent, canActivate : [AuthGuard]},
 
   {path: '404', component: NotfoundComponent},
   {path: '**', redirectTo: '/404'}

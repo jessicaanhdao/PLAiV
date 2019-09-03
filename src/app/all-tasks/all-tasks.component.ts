@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TaskDataService } from '../shared/task-data/task-data.service';
+import { TaskDataService } from '../services/task-data/task-data.service';
 import moment  from 'moment';
 
 @Component({

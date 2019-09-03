@@ -2,9 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import Task from '../../models/task';
 import { HttpHeaders } from '@angular/common/http';
-import { getConfig } from 'radiks';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { ErrorModalComponent } from 'src/app/errormodal/errormodal.component';
+import { ErrorModalComponent } from 'src/app/error-modal/error-modal.component';
 
 const httpOptions = {
   headers: new HttpHeaders({

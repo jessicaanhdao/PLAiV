@@ -11,14 +11,15 @@ import { MonthContainerComponent } from './month-container/month-container.compo
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { NotfoundComponent } from './notfound/notfound.component';
-import { CellComponent } from './cell/cell.component';
+import { CellComponent } from './month-cell/month-cell.component';
 import { WeekComponent } from './week/week.component';
 import { DayContainerComponent } from './day-container/day-container.component';
 import { WeekContainerComponent } from './week-container/week-container.component';
 import { WeekCellComponent } from './week-cell/week-cell.component';
-import { ErrorModalComponent } from './errormodal/errormodal.component';
+import { ErrorModalComponent } from './error-modal/error-modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AllTasksComponent } from './all-tasks/all-tasks.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { MatTooltipModule } from '@angular/material/tooltip';
 @NgModule({
@@ -37,6 +38,7 @@ import { AllTasksComponent } from './all-tasks/all-tasks.component';
     WeekCellComponent,
     ErrorModalComponent,
     AllTasksComponent,
+    FeedbackComponent,
   ],
   imports: [
     NgbModule,

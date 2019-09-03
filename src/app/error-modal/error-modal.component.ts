@@ -3,8 +3,8 @@ import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-error-modal',
-  templateUrl: './errormodal.component.html',
-  styleUrls: ['./errormodal.component.css']
+  templateUrl: './error-modal.component.html',
+  styleUrls: ['./error-modal.component.css']
 })
 export class ErrorModalComponent implements OnInit {
   @Input() error : string

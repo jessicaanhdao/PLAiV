@@ -1,0 +1,9 @@
+.btn-plaiv {
+    color: #00c4cf !important;
+    border-color: #00c4cf !important;
+}
+
+.btn-plaiv:hover {
+    color:white !important;
+    background-color: #00c4cf !important;
+}

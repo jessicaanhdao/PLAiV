@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import moment from 'moment';
-import { TaskDataService } from '../shared/task-data/task-data.service';
+import { TaskDataService } from '../services/task-data/task-data.service';
 
 @Component({
   selector: 'app-month',

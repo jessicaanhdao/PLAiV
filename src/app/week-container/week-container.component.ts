@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import moment from 'moment';
-import { MomentService } from '../shared/moment/moment.service';
+import { MomentService } from '../services/moment/moment.service';
 
 @Component({
   selector: 'app-week-container',
