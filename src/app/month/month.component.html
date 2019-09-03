@@ -12,7 +12,7 @@
                 <h1 style="position: absolute; bottom: 10px; left: 10px"></h1>
             </div>  
             <ng-template #elseBlock >  
-                <app-cell [day]=(i+1)+7*(j)-days[0] [currentMonth] = 'currentMonth'></app-cell>
+                <app-cell [day]=(i+1)+7*(j)-days[0] [currentYear] = 'currentYear' [currentMonth] = 'currentMonth'></app-cell>
             </ng-template>
         </div>
     </div>

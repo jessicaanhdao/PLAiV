@@ -5,7 +5,7 @@
                 tooltip="previous month"><i class="fas fa-chevron-left"></i></button>
             </div>
             <div class="col-md-10 col-sm-6" style="text-align: center">
-                <h1>{{thisMonth}}</h1>
+                <h1>{{thisMonth}} {{thisYear}}</h1>
                 <p>{{daysOfMonth}} days</p>
             </div>
             <div class="col-sm-1">
@@ -13,5 +13,5 @@
                 tooltip="next month"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
-    <app-month [currentMonth] = 'thisMonth' [daysOfMonth] = 'daysOfMonth'></app-month>
+    <app-month [currentMonth] = 'thisMonth' [currentYear] = 'thisYear' [daysOfMonth] = 'daysOfMonth'></app-month>
 </div>

@@ -7,7 +7,7 @@ import { TaskDataService } from '../shared/task-data/task-data.service';
   styleUrls: ['./week.component.css']
 })
 export class WeekComponent implements OnInit, OnChanges {
-  @Input() days: number[];
+  @Input() days: string[];
   tasks: [][];
   monTasks: number[];
   tueTasks: number[];
@@ -27,19 +27,19 @@ export class WeekComponent implements OnInit, OnChanges {
 
   }
   async fecthTask() {
-    let date = '2019/' + this.days[1];
+    let date = this.days[1];
     this.monTasks = await this.taskDataService.fetchTaskListByDate(date);
-    date = '2019/' + this.days[2];
+    date = this.days[2];
     this.tueTasks = await this.taskDataService.fetchTaskListByDate(date);
-    date = '2019/' + this.days[3];
+    date = this.days[3];
     this.wedTasks = await this.taskDataService.fetchTaskListByDate(date);
-    date = '2019/' + this.days[4];
+    date = this.days[4];
     this.thuTasks = await this.taskDataService.fetchTaskListByDate(date);
-    date = '2019/' + this.days[5];
+    date = this.days[5];
     this.friTasks = await this.taskDataService.fetchTaskListByDate(date);
-    date = '2019/' + this.days[0];
+    date = this.days[0];
     this.weekendTasks = await this.taskDataService.fetchTaskListByDate(date);
-    date = '2019/' + this.days[6];
+    date = this.days[6];
     if (this.weekendTasks !== undefined) {
       this.weekendTasks.concat(await this.taskDataService.fetchTaskListByDate(date));
     } else {

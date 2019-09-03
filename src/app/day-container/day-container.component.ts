@@ -45,7 +45,8 @@ export class DayContainerComponent implements OnInit, AfterViewInit {
     this.activatedRoute.params.subscribe(params => {
       const month = params.month;
       const date = params.date;
-      this.radiksDate = '2019/' + month + '/' + date;
+      const year = params.year;
+      this.radiksDate = year + '/' + month + '/' + date;
       if (month !== undefined && date !== undefined) {
         this.currentMoment = moment(this.radiksDate, 'YYYY/MM/DD');
         this.viewDate = this.currentMoment.format('dddd, MMMM DD, YYYY');
@@ -79,4 +80,3 @@ export class DayContainerComponent implements OnInit, AfterViewInit {
     // this.taskUndone = await this.dayComponent.ngOnChanges();
   }
 }
-

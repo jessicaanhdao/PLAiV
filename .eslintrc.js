@@ -28,9 +28,9 @@ module.exports = {
 		],
 		'semi': [
 			'error',
-			'always'
+			'never'
 		],
-		"comma-dangle": ["error", "never"],
+		'comma-dangle': ["error", "never"],
 		"comma-dangle": ["error", {
 			"arrays": "never",
 			"objects": "never",
@@ -39,4 +39,4 @@ module.exports = {
 			"functions": "never"
 		}]
 	}
-};
+}

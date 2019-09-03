@@ -16,6 +16,7 @@ export class MonthComponent implements OnInit, OnChanges {
   days = [];
   totalCount = 0;
   @Input() currentMonth: string;
+  @Input() currentYear : string;
   @Input() daysOfMonth: number;
 
   constructor(private taskService: TaskDataService) {
@@ -29,7 +30,7 @@ export class MonthComponent implements OnInit, OnChanges {
   loadDays(daysOfMonth) {
     this.days = [];
     for (let i = 0 ; i < daysOfMonth; i++) {
-      const date = this.currentMonth + '-' + (i + 1) + '-2019';
+      const date = this.currentMonth + '-' + (i + 1) + '-'+this.currentYear;
       const toDay = moment(date, 'MMMM-DD-YYYY').format('d');
       this.days.push(toDay);
     }

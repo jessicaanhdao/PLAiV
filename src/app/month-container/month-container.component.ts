@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MomentService } from '../shared/moment/moment.service';
 import moment from 'moment';
 
 @Component({
@@ -9,21 +10,27 @@ import moment from 'moment';
 export class MonthContainerComponent implements OnInit {
   month = moment(); // Moment object
   thisMonth = this.month.format('MMMM'); // string object - for view
+  thisYear = this.month.format('YYYY')
   daysOfMonth = this.month.daysInMonth();
 
   constructor() { }
 
   ngOnInit() {
   }
+
+  getMonthInfo() {
+    this.thisMonth = this.month.format('MMMM'); // string object - for view
+    this.thisYear = this.month.format('YYYY')
+    this.daysOfMonth = this.month.daysInMonth();
+  }
+  
   nextMonth() {
     this.month.add(1, 'months');
-    this.thisMonth = this.month.format('MMMM');
-    this.daysOfMonth = this.month.daysInMonth();
+    this.getMonthInfo();
   }
   prevMonth() {
     this.month.subtract(1, 'months');
-    this.thisMonth = this.month.format('MMMM');
-    this.daysOfMonth = this.month.daysInMonth();
+    this.getMonthInfo();
 
   }
 }

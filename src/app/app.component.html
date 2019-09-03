@@ -1,9 +1,10 @@
-
-<div *ngIf="auth.isLoggedIn" >
-    <app-nav></app-nav>
-</div>
-<div *ngIf="!auth.isLoggedIn" class="container-fluid" >
-    <app-login></app-login>
-</div>
+<!-- <div class="container-fluid"> -->
+    <div *ngIf="auth.isLoggedIn" class="container" style="position: relative" >
+        <app-nav></app-nav>
+    </div>
+    <div *ngIf="!auth.isLoggedIn" class="container-fluid" >
+        <app-login></app-login>
+    </div>
+<!-- </div> -->
 <!-- <app-error-modal></app-error-modal> -->
 <router-outlet></router-outlet>
