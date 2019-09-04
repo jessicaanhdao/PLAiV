@@ -20,7 +20,6 @@
               <div class="col">
                 <h1>{{name}} </h1>
                 <p>{{username_first}}</p>
-
               </div>
               <!-- <div class="col-4">
                 <i class="fas fa-cog"></i>
@@ -35,38 +34,7 @@
             <li class="list-group-item" routerLink='/week' routerLinkActive="router-link-active">MY WEEKLY TASKS</li>
             <li class="list-group-item" routerLink='/month'routerLinkActive="router-link-active">MY MONTHLY TASKS</li>
             <li class="list-group-item" routerLink='/all-tasks' routerLinkActive="router-link-active">All TASKS</li>
-            <!-- <li class="list-group-item" id="fonts">Fonts
-              <ul class="list-group">
-                <li class="list-group-item " (click)="changeFont('salmaregular')"  id="font1" >
-                  <a class="" data-toggle="pill" role="tab" aria-selected="true"
-                  >Default</a>
-                </li>
-                <li class="list-group-item" (click)="changeFont('Montserrat')"id="defaultFont">
-                  <a class="" data-toggle="pill" role="tab"
-                 >Style 1</a>
-                </li>
-                <li class="list-group-item" (click)="changeFont('Love Ya Like A Sister')" id="font2">
-                  <a class="" data-toggle="pill" role="tab"
-                  >Style 2</a>
-                </li>
-              </ul>
-            </li> -->
-            <!-- <li class="list-group-item">Theme
-              <ul class="nav nav-pills nav-fill">
-                <li class="nav-item " (click)="changeTheme('#00c4cf')"  id="defaultColor">
-                  <a class="nav-link active" data-toggle="pill" role="tab" aria-selected="true"
-                 >Default</a>
-                </li>
-                <li class="nav-item" (click)="changeTheme('#f8a5c0')">
-                  <a class="nav-link" data-toggle="pill" role="tab"
-                  id="pinkColor">Pink</a>
-                </li>
-                <li class="nav-item" (click)="changeTheme('#fff')">
-                  <a class="nav-link" data-toggle="pill" role="tab"
-                  id="whiteColor">White</a>
-                </li>
-              </ul>
-            </li> -->
+            
           </ul>
       <div class="row">
         <div class="col-md-12 mx-auto">
@@ -92,32 +60,51 @@
 
     </div>
   <div class="d-md-none" style="background-color: #00c4cf ; width: 100%; position: fixed; z-index: 1;">
-    <!-- <ul class="nav">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Active</a>
+    <nav  class="navbar px-0">
+      <!-- <div class="dropdown">
+          <div class="avatar dropdown-toggle "  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
+          [ngStyle]="{
+          'background-image': 'url('+avatarUrl+ ')',
+          'background-position': 'center',
+          'background-size': 'cover',
+          'background-repeat': 'no-repeat',
+          'width' : '40px',
+          
+          'height' : '40px'}" ></div>
+         
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item"  routerLink='/feedback'><i class="far fa-edit"></i> Feedback</a>
+                <a class="dropdown-item"  routerLink='/support-us'><i class="fas fa-donate"></i> Support Us</a>
+                <a class="dropdown-item" (click)='logOut()'><i class="fas fa-sign-out-alt"></i> Log Out</a>
+              </div>
+      </div> -->
+    <ul class="nav justify-content-center navmenusmall"  style="text-align: center; height: 50px; color: white; text-shadow: 0 0 10px white">
+      <li class="nav-item nav-link dropdown">
+          <div class="avatar dropdown-toggle "  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
+          [ngStyle]="{
+          'background-image': 'url('+avatarUrl+ ')',
+          'background-position': 'center',
+          'background-size': 'cover',
+          'background-repeat': 'no-repeat',
+          'width' : '40px',
+          
+          'height' : '40px'}" ></div>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item"  routerLink='/feedback'><i class="far fa-edit"></i> Feedback</a>
+              <a class="dropdown-item"  routerLink='/support-us'><i class="fas fa-donate"></i> Support Us</a>
+              <a class="dropdown-item" (click)='logOut()'><i class="fas fa-sign-out-alt"></i> Log Out</a>
+            
+            </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+      <li class="nav-item nav-link" routerLink='/'> TODAY
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+      <li class="nav-item nav-link" routerLink='/week'>WEEK
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Disabled</a>
+      <li class="nav-item nav-link" routerLink='/month'>MONTH
       </li>
-    </ul> -->
-    <div class="nav row align-items-center" style="text-align: center; height: 50px; color: white; text-shadow: 0 0 10px white">
-      <div class="col nav-item" routerLink='/'>
-        TODAY
-      </div>
-      <div class="col nav-item" routerLink='/week'>
-        WEEK
-      </div>
-      <div class="col nav-item" routerLink='/month'>
-        MONTH
-      </div>
-      <div class="col nav-item" routerLink='/all-tasks'>
-        ALL
-      </div>
-    </div>  
+      <li class="nav-item nav-link" routerLink='/all-tasks'> ALL
+      </li>
+    </ul>
+  </nav>
   </div>
+  

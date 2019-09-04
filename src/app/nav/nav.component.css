@@ -60,3 +60,22 @@
 	border-radius: 5px;
 	border : 1px white solid;
 }
+.navmenu li.active, .navmenusmall li.active, .router-link.active {
+    background-color: #00ABB6 !important;
+    /* background : rgba(255,255,255,0.8); */
+    border-color: #00c4cf !important
+
+}
+.list-group-item.active, .list-group-item:hover , .nav-link.active, .nav-link:hover{
+    outline: none !important;
+	border:1px solid #00c4cf;
+	border-radius: 0px;
+}
+
+.navmenu li {
+    background: #00c4cf;
+}
+li {
+	padding-left: 10px;
+	padding-right: 10px;
+}
