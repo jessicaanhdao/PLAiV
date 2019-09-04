@@ -9,7 +9,10 @@
 .nav-link.active {
     background-color: #00c4cf!important;
 }
+.nav-link.active#fonts {
+    background-color: white!important;
 
+}
 #defaultFont{
 	font-family: 'Montserrat', sans-serif;
 	font-size: x-large
@@ -52,4 +55,8 @@
 	.modal .modal-full-height {
 		/* width: 500px; */
 	}
+}
+.avatar {
+	border-radius: 5px;
+	border : 1px white solid;
 }

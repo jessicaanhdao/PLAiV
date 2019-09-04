@@ -1,10 +1,10 @@
 <div *ngIf="auth.isLoggedIn" class="container-fluid px-0"  >
     <div class="row">
-        <div class="col-md-3  col-xs-12" style="height: 50px; position: relative;">
+        <div class="col-md-4  col-xs-12" style="height: 50px; position: relative;">
             <app-nav (menuEvent)='receiveMenuEvent($event)'></app-nav>
         </div>
         
-        <div class="col-md-9  col-xs-12"  style="height: 100vh">
+        <div class="col-md-8  col-xs-12"  style="height: 100vh">
             <router-outlet></router-outlet>
         </div>
     </div>

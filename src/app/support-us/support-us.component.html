@@ -1,0 +1,39 @@
+<div class="container-fluid"  style="padding-top: 20px">
+    <div class="row align-items-center" style="height:100vh">
+        <div class="col">
+            <div class="row">
+                <div class="col-10 mx-auto">
+                    <p style="font-size:">PLAiV is developed by a 22 y/o female developer who is passionate about technology and data security.
+                    Your support will help us (me) to continue building amazing products.</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-8 mx-auto" style="border: 5px solid #00c4cf; text-align: center; padding: 50px; box-shadow:  0 0 10px #00c4cf">
+                        <div class="toast" id = 'element' style="background-color: #00c4cf"
+                        role="alert" aria-live="assertive" aria-atomic="true" data-delay="10000">
+                                <div class="toast-header">
+                                        Payment address is copied
+                                </div>
+                        </div>
+                    <p style="font-size: xx-large"><i class="fab fa-bitcoin"></i> BITCOIN ADDRESS</p>
+                    <div class=''>
+                        <img src="../../assets/photos/sample_qr.png" class="img-fluid" alt="BTC QR code">
+                    </div>
+                    <div>
+                        <form class="" (click)='copyAddress()'>
+                        <label for="btc-address">Click to copy Address <i class="far fa-copy"></i></label>
+                        <input  class="form-control"type='text' readonly id='btc-address'
+                        value="bc1qmyve0nq234k8dth7jlnhfs53phecu5as6ld05cdazdylfaj97fpqc0ggq0"
+                        (click)='copyAddress(btcaddress)'>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
+</div>
+<script>
+</script>

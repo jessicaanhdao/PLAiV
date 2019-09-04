@@ -26,21 +26,17 @@ transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     max-width: 100% !important;
     bottom: 0 !important;
 }
-.navmenu li.active, .router-link {
+.navmenu li.active, .router-link.active {
     background-color: #00ABB6;
     /* background : rgba(255,255,255,0.8); */
     border-color: #00c4cf !important
 
 }
-.list-group-item.active {
-    background-color: #00ABB6;
-    border-color: #00c4cf !important
-
-}
-.list-group-item {
-    background-color: #00ABB6;
-
-    border-color: #00c4cf !important
+.list-group-item.active, .list-group-item:hover {
+    outline: none !important;
+    border:1px solid #00c4cf;
+    /* background-color: #00ABB6 !important;
+    border-color: #00c4cf !important */
 
 }
 

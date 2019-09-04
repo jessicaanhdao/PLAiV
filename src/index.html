@@ -30,11 +30,22 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.8/js/mdb.min.js"></script>
   <script>
     $(document).ready(function(){
-    $('.navmenu').on('click','li',function(){
-      console.log("hihiihih")
-      $('.navmenu li.active').removeClass('active');
-      $(this).addClass('active')
-    })  ;
+      $('.navmenu').on('click','li',function(){
+        $('.navmenu li.active').removeClass('active');
+        $(this).addClass('active')
+      })  ;
+
+      var selector = '.navmenu li';
+      var url = window.location.href;
+      var target = url.split('/');
+      console.log("url "+target)
+
+      $(selector).each(function(){
+          if($(this).attr('routerLink')===('/'+target[target.length-1])){
+            $(selector).removeClass('active');
+            $(this).removeClass('active').addClass('active');
+          }
+      });
   });
   </script>
 </body>

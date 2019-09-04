@@ -12,10 +12,22 @@ export class NavComponent implements OnInit {
   @Output() menuEvent : EventEmitter<boolean> = new EventEmitter();
 
   constructor(private auth: AuthService ) {}
-  username = 'noname';
-
+  username = '';
+  username_first = '<No Username>'
+  username_last = 'id.blockstack'
+  name = 'PLAiVner'
+  avatarUrl = ''
   ngOnInit() {
       this.username = this.auth.userSession.loadUserData().username;
+      this.name = this.auth.getPerson().name();
+      this.avatarUrl = this.auth.getPerson().avatarUrl()
+      this.splitusername()
+
+  }
+  splitusername() {
+    var splits = this.username.split('.');
+    this.username_first = splits[0];
+    this.username_last ;
   }
   logOut() {
     this.auth.logout();

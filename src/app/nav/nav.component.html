@@ -1,30 +1,56 @@
 <!-- <button class="btn btn-outline-dark" style="position: absolute; right : 10px" (click)="printView()"><i class="fas fa-print"></i>Print</button> -->
-  
-<div class="d-none d-md-block col-3" style="height: 100%; position: fixed;background-color: #00c4cf">
-      <!-- <img src="../../assets/photos/plaiv_logo.png" style="width: 50%"/> -->
-        <p>MENU</p>
-        <h5>{{username}}</h5>
+<div class="d-none d-md-block col-md-4 col-lg-3" style="height: 100%; position: fixed;background-color: #00c4cf">
+      <img src="../../assets/photos/plaiv_logo.png" style="width: 50%"/>
+        <!-- <p>MENU</p> -->
+        <hr>
+        <div class="row">
+          <div class="col-md-6 col-lg-5 ">
+              <div class="avatar"
+              [ngStyle]="{
+              'background-image': 'url('+avatarUrl+ ')',
+              'background-position': 'center',
+              'background-size': 'cover',
+              'background-repeat': 'no-repeat',
+              'width' : '100%',
+              
+              'padding-top' : '100%'}" ></div>
+          </div>
+          <div class="col-md-6 col-lg-7">
+            <div class="row">
+              <div class="col">
+                <h1>{{name}} </h1>
+                <p>{{username_first}}</p>
+
+              </div>
+              <!-- <div class="col-4">
+                <i class="fas fa-cog"></i>
+              </div> -->
+            </div>
+          </div>
+        </div>
+        
+        <hr>
         <ul class="list-group list-group-flush navmenu" style="color: white; text-shadow: 0 0 10px white">
-            <li class="list-group-item active" routerLink='/'>Today</li>
-            <li class="list-group-item" routerLink='/week'>My Weekly Plan</li>
-            <li class="list-group-item" routerLink='/month'>My Monthly Plan</li>
-            <li class="list-group-item" routerLink='/alltasks'>All Tasks</li>
-            <li class="list-group-item">Fonts
-              <!-- <ul class="nav nav-pills nav-fill">
-                <li class="nav-item " (click)="changeFont('salmaregular')"  id="font1" >
-                  <a class="nav-link active" data-toggle="pill" role="tab" aria-selected="true"
+            <li class="list-group-item" routerLink='/' routerLinkActive="router-link-active">TODAY</li>
+            <li class="list-group-item" routerLink='/week' routerLinkActive="router-link-active">MY WEEKLY TASKS</li>
+            <li class="list-group-item" routerLink='/month'routerLinkActive="router-link-active">MY MONTHLY TASKS</li>
+            <li class="list-group-item" routerLink='/all-tasks' routerLinkActive="router-link-active">All TASKS</li>
+            <!-- <li class="list-group-item" id="fonts">Fonts
+              <ul class="list-group">
+                <li class="list-group-item " (click)="changeFont('salmaregular')"  id="font1" >
+                  <a class="" data-toggle="pill" role="tab" aria-selected="true"
                   >Default</a>
                 </li>
-                <li class="nav-item" (click)="changeFont('Montserrat')"id="defaultFont">
-                  <a class="nav-link" data-toggle="pill" role="tab"
+                <li class="list-group-item" (click)="changeFont('Montserrat')"id="defaultFont">
+                  <a class="" data-toggle="pill" role="tab"
                  >Style 1</a>
                 </li>
-                <li class="nav-item" (click)="changeFont('Love Ya Like A Sister')" id="font2">
-                  <a class="nav-link" data-toggle="pill" role="tab"
+                <li class="list-group-item" (click)="changeFont('Love Ya Like A Sister')" id="font2">
+                  <a class="" data-toggle="pill" role="tab"
                   >Style 2</a>
                 </li>
-              </ul> -->
-            </li>
+              </ul>
+            </li> -->
             <!-- <li class="list-group-item">Theme
               <ul class="nav nav-pills nav-fill">
                 <li class="nav-item " (click)="changeTheme('#00c4cf')"  id="defaultColor">
@@ -42,11 +68,28 @@
               </ul>
             </li> -->
           </ul>
-      <!-- <div class="justify-content-center">
-        <button type="button" class="btn btn-outline-light" routerLink='/feedback'
-        tooltip='Help us improve by sending your feedback'><i class="far fa-edit"></i> Send feedback</button>        
-        <button type="button" class="btn btn-outline-dark" (click)="logOut()">Log Out</button>
-      </div> -->
+      <div class="row">
+        <div class="col-md-12 mx-auto">
+          <button type="button" class="btn btn-outline-light btn-sm" routerLink='/feedback'
+          tooltip='Help us improve by sending your feedback'
+          style="white-space: nowrap;width: 100%"><i class="far fa-edit"></i> Send feedback</button>        
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 mx-auto">
+          <button type="button" class="btn btn-outline-light btn-sm" routerLink='/support-us'
+          style="white-space: nowrap;width: 100%">
+            <i class="fas fa-donate"></i> Support Us
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+        <button type="button" style="width: 100%" class="btn btn-outline-dark" (click)="logOut()"><i class="fas fa-sign-out-alt"></i> Log Out</button>
+        </div>
+      </div>
+<!-- <app-footer></app-footer> -->
+
     </div>
   <div class="d-md-none" style="background-color: #00c4cf ; width: 100%; position: fixed; z-index: 1;">
     <!-- <ul class="nav">
@@ -73,7 +116,7 @@
       <div class="col nav-item" routerLink='/month'>
         MONTH
       </div>
-      <div class="col nav-item" routerLink='/alltasks'>
+      <div class="col nav-item" routerLink='/all-tasks'>
         ALL
       </div>
     </div>  

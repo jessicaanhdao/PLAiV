@@ -20,6 +20,9 @@ import { ErrorModalComponent } from './error-modal/error-modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AllTasksComponent } from './all-tasks/all-tasks.component';
 import { FeedbackComponent } from './feedback/feedback.component';
+import { FooterComponent } from './footer/footer.component';
+import { SupportUsComponent } from './support-us/support-us.component';
+import { InfoComponent } from './info/info.component';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { MatTooltipModule } from '@angular/material/tooltip';
 @NgModule({
@@ -39,6 +42,9 @@ import { FeedbackComponent } from './feedback/feedback.component';
     ErrorModalComponent,
     AllTasksComponent,
     FeedbackComponent,
+    FooterComponent,
+    SupportUsComponent,
+    InfoComponent,
   ],
   imports: [
     NgbModule,

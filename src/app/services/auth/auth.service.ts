@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import {
   UserSession,
-  AppConfig
+  AppConfig,
+  Person
 } from 'blockstack';
 
 import { User, configure, getConfig } from 'radiks';
@@ -51,5 +52,8 @@ export class AuthService {
   }
   async getLoggedIn() {
     return await this.handleSignedIn();
+  }
+  getPerson() {
+    return new Person(this.userSession.loadUserData().profile)
   }
 }
