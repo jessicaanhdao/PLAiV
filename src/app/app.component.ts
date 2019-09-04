@@ -18,8 +18,11 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    // if () {
-    // }
+  }
+  menuOpen = false
+  receiveMenuEvent($event) {
+    this.menuOpen = $event
+    console.log("evnet "+$event)
   }
 
 }

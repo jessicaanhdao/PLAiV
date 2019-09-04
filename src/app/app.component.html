@@ -1,10 +1,17 @@
-<!-- <div class="container-fluid"> -->
-    <div *ngIf="auth.isLoggedIn" class="container" style="position: relative" >
-        <app-nav></app-nav>
+<div *ngIf="auth.isLoggedIn" class="container-fluid" style="position: relative" >
+    <div class="row">
+        <div class="col-md-2">
+            <app-nav (menuEvent)='receiveMenuEvent($event)'></app-nav>
+        </div>
+        
+        <div class="col-md-10">
+            <router-outlet></router-outlet>
+        </div>
+        <!-- <div *ngIf="!menuOpen" class="col-md-12">
+            <router-outlet></router-outlet>
+        </div> -->
     </div>
-    <div *ngIf="!auth.isLoggedIn" class="container-fluid" >
-        <app-login></app-login>
-    </div>
-<!-- </div> -->
-<!-- <app-error-modal></app-error-modal> -->
-<router-outlet></router-outlet>
+</div>
+<div *ngIf="!auth.isLoggedIn" class="container-fluid" >
+    <app-login></app-login>
+</div>

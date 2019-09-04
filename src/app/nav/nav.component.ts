@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AuthService } from '../services/auth/auth.service';
 
 @Component({
@@ -9,13 +9,12 @@ import { AuthService } from '../services/auth/auth.service';
 
 })
 export class NavComponent implements OnInit {
+  @Output() menuEvent : EventEmitter<boolean> = new EventEmitter();
 
   constructor(private auth: AuthService ) {}
   username = 'noname';
 
   ngOnInit() {
-    // this.userSession = this.auth.userSession
-    // if (this.auth.userSession.isUserSignedIn()) {
       this.username = this.auth.userSession.loadUserData().username;
   }
   logOut() {
@@ -40,5 +39,14 @@ export class NavComponent implements OnInit {
   }
   printView() {
     window.print();
+  }
+  menuOpen = false
+  openMenu() {
+    this.menuOpen = true
+    this.menuEvent.emit(this.menuOpen)
+  }
+  closeMenu() {
+    this.menuOpen = false
+    this.menuEvent.emit(this.menuOpen)
   }
 }

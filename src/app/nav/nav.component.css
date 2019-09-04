@@ -44,3 +44,9 @@
 #whiteColor.active {
 	background-color: whitesmoke!important;
 }
+
+@media (min-width: 992px){
+	.modal .modal-full-height {
+		/* width: 500px; */
+	}
+}
