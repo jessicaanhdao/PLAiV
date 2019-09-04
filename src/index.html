@@ -29,9 +29,13 @@
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.8/js/mdb.min.js"></script>
   <script>
-      // $(window).on('load',function(){
-      //         $('#menu').modal('show');
-      //     });
-      </script>
+    $(document).ready(function(){
+    $('.navmenu').on('click','li',function(){
+      console.log("hihiihih")
+      $('.navmenu li.active').removeClass('active');
+      $(this).addClass('active')
+    })  ;
+  });
+  </script>
 </body>
 </html>

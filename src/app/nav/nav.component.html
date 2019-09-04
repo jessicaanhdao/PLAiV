@@ -1,14 +1,16 @@
 <!-- <button class="btn btn-outline-dark" style="position: absolute; right : 10px" (click)="printView()"><i class="fas fa-print"></i>Print</button> -->
-
-<!-- Full Height Modal Left -->
-
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item" routerLink='/'>Today</li>
+  
+<div class="d-none d-md-block col-3" style="height: 100%; position: fixed;background-color: #00c4cf">
+      <!-- <img src="../../assets/photos/plaiv_logo.png" style="width: 50%"/> -->
+        <p>MENU</p>
+        <h5>{{username}}</h5>
+        <ul class="list-group list-group-flush navmenu" style="color: white; text-shadow: 0 0 10px white">
+            <li class="list-group-item active" routerLink='/'>Today</li>
             <li class="list-group-item" routerLink='/week'>My Weekly Plan</li>
             <li class="list-group-item" routerLink='/month'>My Monthly Plan</li>
             <li class="list-group-item" routerLink='/alltasks'>All Tasks</li>
             <li class="list-group-item">Fonts
-              <ul class="nav nav-pills nav-fill">
+              <!-- <ul class="nav nav-pills nav-fill">
                 <li class="nav-item " (click)="changeFont('salmaregular')"  id="font1" >
                   <a class="nav-link active" data-toggle="pill" role="tab" aria-selected="true"
                   >Default</a>
@@ -21,9 +23,9 @@
                   <a class="nav-link" data-toggle="pill" role="tab"
                   >Style 2</a>
                 </li>
-              </ul>
+              </ul> -->
             </li>
-            <li class="list-group-item">Theme
+            <!-- <li class="list-group-item">Theme
               <ul class="nav nav-pills nav-fill">
                 <li class="nav-item " (click)="changeTheme('#00c4cf')"  id="defaultColor">
                   <a class="nav-link active" data-toggle="pill" role="tab" aria-selected="true"
@@ -38,11 +40,41 @@
                   id="whiteColor">White</a>
                 </li>
               </ul>
-            </li>
+            </li> -->
           </ul>
-      <div class="justify-content-center">
+      <!-- <div class="justify-content-center">
         <button type="button" class="btn btn-outline-light" routerLink='/feedback'
         tooltip='Help us improve by sending your feedback'><i class="far fa-edit"></i> Send feedback</button>        
         <button type="button" class="btn btn-outline-dark" (click)="logOut()">Log Out</button>
+      </div> -->
+    </div>
+  <div class="d-md-none" style="background-color: #00c4cf ; width: 100%; position: fixed; z-index: 1;">
+    <!-- <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Active</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Disabled</a>
+      </li>
+    </ul> -->
+    <div class="nav row align-items-center" style="text-align: center; height: 50px; color: white; text-shadow: 0 0 10px white">
+      <div class="col nav-item" routerLink='/'>
+        TODAY
       </div>
-   
+      <div class="col nav-item" routerLink='/week'>
+        WEEK
+      </div>
+      <div class="col nav-item" routerLink='/month'>
+        MONTH
+      </div>
+      <div class="col nav-item" routerLink='/alltasks'>
+        ALL
+      </div>
+    </div>  
+  </div>
