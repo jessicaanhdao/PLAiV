@@ -1,9 +1,9 @@
 {
     "name": "PLAiV",
-    "start_url": ".",
+    "start_url": "/",
     "description": "Decentralized & Decrypted Digital Planner",
     "icons": [{
-      "src": "assets/photos/plaiv_icon.png",
+      "src": "https://plaiv-sample.netlify.com/assets/photos/plaiv_icon.png",
       "sizes": "192x192",
       "type": "image/png"
     }]

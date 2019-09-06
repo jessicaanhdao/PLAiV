@@ -16,7 +16,7 @@ exports.config = {
 		'browserName': 'chrome'
 	},
 	directConnect: true,
-	baseUrl: '/',
+	baseUrl: 'https://plaiv-sample.netlify.com/',
 	framework: 'jasmine',
 	jasmineNodeOpts: {
 		showColors: true,

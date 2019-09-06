@@ -23,7 +23,8 @@
               "src/favicon.ico",
               "src/planicon.png",
               "src/assets",
-              "src/manifest.json"
+              "src/manifest.json",
+              "src/manifest.webmanifest"
 
             ],
             "styles": [
@@ -36,7 +37,7 @@
               "./node_modules/jquery/dist/jquery.min.js",
               "./node_modules/bootstrap/dist/js/bootstrap.min.js",
               "src/js/all.js"
-            ]
+                        ]
           },
           "configurations": {
             "production": {
@@ -66,7 +67,9 @@
                   "maximumWarning": "6kb",
                   "maximumError": "10kb"
                 }
-              ]
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "ngsw-config.json"
             }
           }
         },
@@ -98,7 +101,8 @@
               "src/favicon.ico",
               "src/planicon.png",
               "src/assets",
-              "src/manifest.json"
+              "src/manifest.json",
+              "src/manifest.webmanifest"
             ],
             "styles": [
               "src/salma-font/stylesheet.css",

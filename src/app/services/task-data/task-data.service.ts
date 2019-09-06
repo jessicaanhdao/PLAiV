@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import Task from '../../models/task';
-import { HttpHeaders } from '@angular/common/http';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { ErrorModalComponent } from 'src/app/error-modal/error-modal.component';
+import { Observable } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -21,7 +21,7 @@ export class TaskDataService {
 
   constructor(private http: HttpClient, private modalService: NgbModal) {   }
   // URL = "http://localhost:52389/api/task"
-
+ 
   async fetchTaskListByDate(date: string) {
     const TaskModel: any = Task;
     try {

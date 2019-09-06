@@ -5,10 +5,14 @@
         </div>
         
         <div class="col-md-8  col-xs-12"  style="height: 100vh">
+<button class="btn btn-outline-dark" (click)='subscribeToNotifications()'>PUSH NOTI</button>
+
             <router-outlet></router-outlet>
         </div>
     </div>
 </div>
 <div *ngIf="!auth.isLoggedIn" class="container-fluid" >
+<button class="btn btn-outline-dark" (click)='subscribeToNotifications()'>PUSH NOTI</button>
+
     <app-login></app-login>
 </div>

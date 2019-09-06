@@ -4,29 +4,71 @@
   <meta charset="utf-8">
   <title>PLAiV</title>
   <base href="/">
-  <link rel="manifest" href="manifest.json" />
+  <link rel="manifest" href="manifest.json"/>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="planicon.png">
   <!-- fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300|Sacramento|Love+Ya+Like+A+Sister|Crafty+Girls|&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300|Sacramento|Love+Ya+Like+A+Sister|Crafty+Girls|&amp;display=swap" rel="stylesheet">
 
   <!-- Bootstrap core CSS -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
   <!-- Material Design Bootstrap -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.8/css/mdb.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="styles.9fb575d7d4b1e51be858.css"></head>
+    <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#1976d2">
+<link rel="stylesheet" href="styles.9fb575d7d4b1e51be858.css"></head>
   
 <body>
   <app-root></app-root>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  
+  <noscript>Please enable JavaScript to continue using this application. If you don't know what it is, please Google or contact plaiv.app@gmail.com for customer support</noscript>
   <!-- JQuery -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<!-- Bootstrap tooltips -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
-<!-- Bootstrap core JavaScript -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<!-- MDB core JavaScript -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.8/js/mdb.min.js"></script>
-<script src="runtime.d6f76dcd2a3a08ea9272.js" defer></script><script src="polyfills-es5.3b9b0ba517172659c13c.js" nomodule defer></script><script src="polyfills.cba5b4fa3fd250c15d67.js" defer></script><script src="scripts.7210556edbc239863ad5.js" defer></script><script src="main.4e0011656bf3f568fb40.js" defer></script></body>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.8/js/mdb.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('.navmenu').on('click','li',function(){
+        $('.navmenu li.active').removeClass('active');
+        $(this).addClass('active')
+      })  ;
+
+      var selector = '.navmenu li';
+      var url = window.location.href;
+      var target = url.split('/');
+
+      $(selector).each(function(){
+          if($(this).attr('routerLink')===('/'+target[target.length-1])){
+            $(selector).removeClass('active');
+            $(this).removeClass('active').addClass('active');
+          }
+      });
+
+      $('.navmenusmall').on('click','li',function(){
+        $('.navmenusmall li.active').removeClass('active');
+        $(this).addClass('active')
+      })  ;
+
+      var selector = '.navmenusmall li';
+      var url = window.location.href;
+      var target = url.split('/');
+
+      $(selector).each(function(){
+          if($(this).attr('routerLink')===('/'+target[target.length-1])){
+            $(selector).removeClass('active');
+            $(this).removeClass('active').addClass('active');
+          }
+      });
+      $('.dropdown-toggle').dropdown()
+      $('#form').click( function() {
+          $('#element').toast('show')
+        
+      })
+  });
+  </script>
+<script src="runtime.d6f76dcd2a3a08ea9272.js" defer></script><script src="polyfills-es5.3b9b0ba517172659c13c.js" nomodule defer></script><script src="polyfills.cba5b4fa3fd250c15d67.js" defer></script><script src="scripts.7210556edbc239863ad5.js" defer></script><script src="main.2e946dcb5802b5c80ad2.js" defer></script></body>
 </html>

@@ -17,7 +17,9 @@
     "@angular/forms": "^8.2.3",
     "@angular/platform-browser": "^8.2.3",
     "@angular/platform-browser-dynamic": "^8.2.3",
+    "@angular/pwa": "^0.803.3",
     "@angular/router": "^8.2.3",
+    "@angular/service-worker": "^8.2.3",
     "@ng-bootstrap/ng-bootstrap": "^5.1.0",
     "babel-loader": "^8.0.6",
     "blockstack": "^19.3.0",
@@ -39,6 +41,7 @@
     "stream-browserify": "^2.0.2",
     "style-loader": "^1.0.0",
     "tslib": "^1.10.0",
+    "web-push": "^3.3.5",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
@@ -49,6 +52,7 @@
     "@types/bn.js": "^4.11.5",
     "@types/jasmine": "~3.4.0",
     "@types/jasminewd2": "~2.0.3",
+    "@types/jquery": "^3.3.31",
     "@types/node": "^12.7.2",
     "babel-eslint": "^10.0.3",
     "bn.js-types": "^1.0.1",

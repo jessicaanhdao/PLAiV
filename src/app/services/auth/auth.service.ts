@@ -7,12 +7,20 @@ import {
 
 import { User, configure, getConfig } from 'radiks';
 import { Router } from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { throwError, Observable } from 'rxjs';
+import { catchError } from "rxjs/operators";
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+    // 'Authorization': 'my-auth-token'
+  })
+};
 
 @Injectable({
   providedIn: 'root'
 })
-// headers.append("Access-Control-Allow-Methods","GET, POST");
-// headers.append("Access-Control-Allow-Origin","*");
 
 export class AuthService {
   appConfig = new AppConfig(['store_write', 'publish_data']);
@@ -24,7 +32,7 @@ export class AuthService {
     userSession : this.userSession
   } );
 
-  constructor(private router : Router) { }
+  constructor(private router : Router, private http : HttpClient) { }
   isLoggedIn = false;
   login() {
     this.userSession.redirectToSignIn();
@@ -55,5 +63,14 @@ export class AuthService {
   }
   getPerson() {
     return new Person(this.userSession.loadUserData().profile)
+  }
+
+  notiURL = "http://localhost:5000/subscribe"
+  // notiURL = "https://plaiv-server.herokuapp.com/subscribe"
+  postSubscription(sub : PushSubscription) {
+    this.http.post(this.notiURL, sub, httpOptions).subscribe() 
+    // .map(res => res.json()) // ...and calling .json() on the response to return data
+    // .catch((error:any) => Observable.throw(error.json().error || 'Server error')) //...errors if
+    // .subscribe();
   }
 }

@@ -60,7 +60,8 @@
 	border-radius: 5px;
 	border : 1px white solid;
 }
-.navmenu li.active, .navmenusmall li.active, .router-link.active {
+.navmenu li.active, .navmenusmall li.active, .router-link.active,
+.list-group-item:hover, .nav-link:hover {
     background-color: #00ABB6 !important;
     /* background : rgba(255,255,255,0.8); */
     border-color: #00c4cf !important

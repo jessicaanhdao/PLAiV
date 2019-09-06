@@ -13,7 +13,7 @@ import { SupportUsComponent } from './support-us/support-us.component';
 
 const routes: Routes = [
   { path : '', component: DayContainerComponent,  canActivate : [AuthGuard]},
-  // { path : 'login', component: LoginComponent},
+  { path : 'login', component: LoginComponent},
   { path : ':year/:month/:date', component: DayContainerComponent, canActivate : [AuthGuard]},
   { path : 'week', component: WeekContainerComponent, canActivate : [AuthGuard]},
   { path : 'month', component: MonthContainerComponent, canActivate : [AuthGuard]},

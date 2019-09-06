@@ -24,6 +24,8 @@ import { FooterComponent } from './footer/footer.component';
 import { SupportUsComponent } from './support-us/support-us.component';
 import { InfoComponent } from './info/info.component';
 import { SettingComponent } from './setting/setting.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { MatTooltipModule } from '@angular/material/tooltip';
 @NgModule({
@@ -55,6 +57,7 @@ import { SettingComponent } from './setting/setting.component';
     AppBootstrapModule,
     FormsModule,
     HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     // BrowserAnimationsModule,
     // MatTooltipModule,
   ],
