@@ -4,6 +4,8 @@ import Task from '../../models/task';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { ErrorModalComponent } from 'src/app/error-modal/error-modal.component';
 import { Observable } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
+import { ThrowStmt } from '@angular/compiler';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -19,15 +21,26 @@ const httpOptions = {
 export class TaskDataService {
   taskList: Task[];
 
-  constructor(private http: HttpClient, private modalService: NgbModal) {   }
-  // URL = "http://localhost:52389/api/task"
- 
+  constructor(private http: HttpClient, private modalService: NgbModal, private auth : AuthService) {   }
+  getTasksFromLocalStorage(date) {
+    return JSON.parse(localStorage.getItem(date))
+  }
+  addTaskToLocalStorage(date, newTask) {
+    let allTasks = JSON.parse(localStorage.getItem(date)) || []
+    allTasks.push(newTask);
+    localStorage.setItem(date,JSON.stringify(allTasks))
+  }
   async fetchTaskListByDate(date: string) {
-    const TaskModel: any = Task;
-    try {
-      return await TaskModel.fetchOwnList({ dateCreated : date});
-    } catch(e) {
-      this.showErrorModal(e, 'Failed to get tasks.')
+    if(this.auth.usertype === 'BLOCKSTACK') {
+      const TaskModel: any = Task;
+      try {
+        return await TaskModel.fetchOwnList({ dateCreated : date});
+      } catch(e) {
+        this.showErrorModal(e, 'Failed to get tasks.')
+      }
+    } else{ 
+      return this.getTasksFromLocalStorage(date);
+
     }
   }
   async fetchAllTasks() {
@@ -59,19 +72,26 @@ export class TaskDataService {
   }
 
   async addNewTask(task) {
-    const TaskModel: any = Task;
-    const newTask = new TaskModel({
-      dateCreated : task.PostedDate,
-      doneBy: task.DoneBy,
-      isDone : false,
-      name: task.TaskName,
-      description: ''
-    });
-    try {
-      await newTask.save();      
-    } catch(e) {
-      this.showErrorModal(e,'Failed to add new task.')
+    if(this.auth.usertype === 'BLOCKSTACK') {
+
+      const TaskModel: any = Task;
+      const newTask = new TaskModel({
+        dateCreated : task.attrs.dateCreated,
+        doneBy: task.attrs.doneBy,
+        isDone : false,
+        name: task.attrs.name,
+        description: ''
+      });
+      try {
+        await newTask.save();      
+      } catch(e) {
+        this.showErrorModal(e,'Failed to add new task.')
+      }
+    } else {
+      console.log("LOCALLLLLL")
+      this.addTaskToLocalStorage(task.attrs.dateCreated, task);
     }
+
   }
 
   async deleteTask(task) {

@@ -1,4 +1,4 @@
-<div *ngIf="auth.isLoggedIn" class="container-fluid px-0"  >
+<div *ngIf="isLoggedIn" class="container-fluid px-0"  >
     <div class="row">
         <div class="col-md-4  col-xs-12" style="height: 50px; position: relative;">
             <app-nav (menuEvent)='receiveMenuEvent($event)'></app-nav>
@@ -11,7 +11,7 @@
         </div>
     </div>
 </div>
-<div *ngIf="!auth.isLoggedIn" class="container-fluid" >
+<div *ngIf="!isLoggedIn" class="container-fluid" >
 <button class="btn btn-outline-dark" (click)='subscribeToNotifications()'>PUSH NOTI</button>
 
     <app-login></app-login>

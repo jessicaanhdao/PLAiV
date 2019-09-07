@@ -20,7 +20,7 @@ export class DayComponent implements OnInit, OnChanges {
   }
 
   taskList: Task[];
-  newTask = {  TaskName : '', DoneBy : '', IsDone : false, PostedDate : ''};
+  newTask = { attrs : {name : '', doneBy : '', isDone : false, dateCreated : ''}};
   isToday = true;
 
   @Input() currentMoment: moment.Moment ;
@@ -29,8 +29,8 @@ export class DayComponent implements OnInit, OnChanges {
   taskUndone = 0;
   async addNewTask() {
     await this.taskDataService.addNewTask(this.newTask);
-    this.newTask.TaskName = '';
-    this.newTask.DoneBy = '';
+    this.newTask.attrs.name = '';
+    this.newTask.attrs.doneBy = '';
     await this.fetchTasks();
   }
   async checkTaskDone(task , i) {
@@ -61,7 +61,7 @@ export class DayComponent implements OnInit, OnChanges {
     this.radiksDate = this.currentMoment.format('YYYY/MM/DD');
   }
   async fetchTasks() {
-    this.newTask = {TaskName : '', DoneBy : '', IsDone : false, PostedDate : this.radiksDate};
+    this.newTask = { attrs : {name : '', doneBy : '', isDone : false, dateCreated : this.radiksDate}};
     this.taskList = await this.taskDataService.fetchTaskListByDate( this.radiksDate);
     if (await this.taskList !== undefined) {
       this.getParentComponent().totalTasks = await this.taskList.length;

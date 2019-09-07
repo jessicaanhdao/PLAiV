@@ -5,7 +5,7 @@ import { AuthService } from '../services/auth/auth.service';
   selector: 'app-nav',
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css'],
-  providers : [AuthService]
+  // providers : [AuthService]
 
 })
 export class NavComponent implements OnInit {
@@ -18,9 +18,9 @@ export class NavComponent implements OnInit {
   name = 'PLAiVner'
   avatarUrl = ''
   ngOnInit() {
-      this.username = this.auth.userSession.loadUserData().username;
-      this.name = this.auth.getPerson().name();
-      this.avatarUrl = this.auth.getPerson().avatarUrl()
+      this.username = this.auth.username;
+      this.name = this.auth.name;
+      this.avatarUrl = this.auth.avatarUrl;
       this.splitusername()
 
   }

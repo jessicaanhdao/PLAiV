@@ -14,11 +14,14 @@ import { SwPush, SwUpdate } from '@angular/service-worker';
 export class AppComponent implements OnInit {
   title = 'PLAiV';
   readonly VAPID_PUBLIC_KEY = 'BDIgSI3mEOj_oLkpJcMINqVhKqFNfZ0gI9Eg7J7pDQeaA9aYWY_BO4ZUKjf9BcmHXyMRoeWPClLtUY46OFV7qrA'
+  isLoggedIn = true;
   constructor(public auth: AuthService, private router: Router,
             readonly swPush: SwPush,
             private swUpdate : SwUpdate
             ) {
-    this.auth.handleSignedIn()
+    this.auth.handleSignedIn() 
+    //  this.auth.tryWithoutLogin()
+    
   }
   subscribeToNotifications() {
     // if (this.swUpdate.isEnabled){
@@ -29,16 +32,14 @@ export class AppComponent implements OnInit {
         this.auth.postSubscription(sub)
         console.log("subbed "+JSON.stringify(sub))})
       .catch(sub => console.log("rejected "+JSON.stringify(sub)))
-    // } 
-    // else {
-    //   this.swPush.requestSubscription({
-    //     serverPublicKey: this.VAPID_PUBLIC_KEY
-    //   })
-    // }
-     
   }
 
   ngOnInit() {
+    this.auth.getLoggedIn().subscribe(value => {
+      console.log("is log in? "+value)
+  
+        // this.isLoggedIn = value;
+      })
     this.subscribeToNotifications()
   }
   menuOpen = false
